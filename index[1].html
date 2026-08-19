@@ -1,0 +1,3414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">YUNAHM — Soluciones digitales para negocios modernos</title>
+  <meta name="description" content="YUNAHM diseña experiencias digitales, automatiza procesos y crea soluciones tecnológicas para negocios modernos. Diseño web, diseño digital, automatización e inteligencia artificial." />
+  <meta property="og:title" content="YUNAHM — Soluciones digitales para negocios modernos" />
+  <meta property="og:description" content="Detectamos necesidades, diseñamos soluciones y utilizamos tecnología para ayudar a los negocios a trabajar mejor, ahorrar tiempo y crecer." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yunahm.com" />
+  <link rel="canonical" href="https://yunahm.com" />
+  <meta name="robots" content="index, follow" />
+  <!-- og:image: añadir cuando tengas imagen corporativa: <meta property="og:image" content="https://yunahm.com/og-image.jpg" /> -->
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230F0F0F' rx='12'/><text x='50' y='72' font-family='Georgia,serif' font-size='62' font-weight='700' text-anchor='middle' fill='%235FA3A0' letter-spacing='-2'>Y</text></svg>" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+    ============================================================ */
+    :root {
+      --c-bg:        #F8F7F4;
+      --c-bg-alt:    #F0EDE8;
+      --c-dark:      #0F0F0F;
+      --c-dark-2:    #1A1A1A;
+      --c-mid:       #6B6B6B;
+      --c-light:     #BFBFBF;
+      --c-gold:      #5FA3A0;
+      --c-gold-2:    #7BBFBD;
+      --c-gold-light:#E8F5F5;
+      --c-white:     #FFFFFF;
+
+      --ff-display:  'Cormorant Garamond', Georgia, serif;
+      --ff-body:     'Inter', system-ui, sans-serif;
+
+      --fs-xs:   0.75rem;
+      --fs-sm:   0.875rem;
+      --fs-base: 1rem;
+      --fs-md:   1.125rem;
+      --fs-lg:   1.375rem;
+      --fs-xl:   1.75rem;
+      --fs-2xl:  2.25rem;
+      --fs-3xl:  3rem;
+      --fs-4xl:  4rem;
+      --fs-5xl:  5.5rem;
+
+      --sp-1: 0.25rem;
+      --sp-2: 0.5rem;
+      --sp-3: 0.75rem;
+      --sp-4: 1rem;
+      --sp-6: 1.5rem;
+      --sp-8: 2rem;
+      --sp-12: 3rem;
+      --sp-16: 4rem;
+      --sp-24: 6rem;
+      --sp-32: 8rem;
+      --sp-20: 5rem;
+
+      --radius: 2px;
+      --radius-md: 6px;
+
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+      --max-w: 1200px;
+      --nav-h: 72px;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    html { overflow-x: hidden; }
+
+    body {
+      font-family: var(--ff-body);
+      font-size: var(--fs-base);
+      line-height: 1.7;
+      color: var(--c-dark-2);
+      background: var(--c-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    ::selection {
+      background: var(--c-gold-light);
+      color: var(--c-dark);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--c-gold);
+      outline-offset: 3px;
+    }
+
+    /* ============================================================
+       UTILITIES
+    ============================================================ */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--sp-6);
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 var(--sp-4); }
+    }
+
+    .section-label {
+      font-family: var(--ff-body);
+      font-size: var(--fs-xs);
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: var(--sp-4);
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--c-gold);
+      flex-shrink: 0;
+    }
+
+    /* Centradas (section-header) no llevan línea izquierda */
+    .section-header .section-label {
+      justify-content: center;
+    }
+
+    .section-header .section-label::before { display: none; }
+
+    .section-title {
+      font-family: var(--ff-display);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--c-dark);
+      font-size: clamp(1.75rem, 4vw, 3rem);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      background: transparent;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    .nav.scrolled {
+      background: rgba(248, 247, 244, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--sp-6);
+    }
+
+    @media (max-width: 768px) {
+      .nav-inner { padding: 0 var(--sp-4); }
+    }
+
+    /* Logo */
+    .nav-logo {
+      font-family: var(--ff-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      color: var(--c-dark);
+      user-select: none;
+    }
+
+    .nav-logo span {
+      color: var(--c-gold);
+    }
+
+    /* Desktop links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(var(--sp-4), 3vw, var(--sp-8));
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: var(--fs-sm);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--c-mid);
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--c-dark); }
+
+    /* Lang + CTA */
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-4);
+    }
+
+    .lang-selector {
+      position: relative;
+    }
+
+    .lang-btn {
+      background: none;
+      border: 1px solid var(--c-light);
+      border-radius: var(--radius);
+      padding: 5px 10px;
+      font-family: var(--ff-body);
+      font-size: var(--fs-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-mid);
+      cursor: pointer;
+      transition: border-color var(--transition), color var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lang-btn:hover { border-color: var(--c-gold); color: var(--c-dark); }
+
+    .lang-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: var(--c-white);
+      border: 1px solid var(--c-bg-alt);
+      border-radius: var(--radius-md);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      min-width: 120px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(-6px);
+      pointer-events: none;
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .lang-dropdown.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+
+    .lang-dropdown button {
+      width: 100%;
+      padding: 10px 16px;
+      text-align: left;
+      background: none;
+      border: none;
+      font-family: var(--ff-body);
+      font-size: var(--fs-sm);
+      color: var(--c-mid);
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .lang-dropdown button:hover {
+      background: var(--c-bg);
+      color: var(--c-dark);
+    }
+
+    .lang-dropdown button.active {
+      color: var(--c-gold);
+      font-weight: 500;
+    }
+
+    /* i18n: EN y DE ahora son totalmente funcionales */
+
+    .btn-nav {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 22px;
+      background: var(--c-dark);
+      color: #FFFFFF;
+      font-family: var(--ff-body);
+      font-size: var(--fs-sm);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      border-radius: var(--radius);
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+      border: 1px solid var(--c-dark);
+      min-height: 44px;
+    }
+
+    .btn-nav:hover {
+      background: var(--c-gold);
+      border-color: var(--c-gold);
+      color: #0F0F0F;
+      transform: translateY(-1px);
+    }
+
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 44px;
+      height: 44px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      gap: 5px;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--c-dark);
+      transition: transform var(--transition), opacity var(--transition);
+      transform-origin: center;
+    }
+
+    .nav-toggle.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-toggle.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile menu — visibility+opacity para evitar bugs iOS con display:none */
+    .nav-mobile {
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--c-bg);
+      border-top: 1px solid var(--c-bg-alt);
+      padding: var(--sp-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+      z-index: 99;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+      transition: opacity var(--transition), transform var(--transition), visibility 0s linear 0.3s;
+    }
+
+    .nav-mobile.open {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+      transition: opacity var(--transition), transform var(--transition), visibility 0s linear 0s;
+    }
+
+    .nav-mobile a {
+      font-size: var(--fs-md);
+      font-weight: 400;
+      color: var(--c-dark-2);
+      padding: var(--sp-3) 0;
+      border-bottom: 1px solid var(--c-bg-alt);
+      transition: color var(--transition);
+      display: block;
+    }
+
+    .nav-mobile a:hover { color: var(--c-gold); }
+
+    .nav-mobile .btn-nav {
+      margin-top: var(--sp-4);
+      justify-content: center;
+      padding: 14px;
+    }
+
+    .nav-mobile .lang-row {
+      display: flex;
+      gap: var(--sp-2);
+      margin-top: var(--sp-4);
+    }
+
+    .nav-mobile .lang-row button {
+      background: none;
+      border: 1px solid var(--c-light);
+      border-radius: var(--radius);
+      padding: 6px 12px;
+      font-family: var(--ff-body);
+      font-size: var(--fs-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-mid);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .nav-mobile .lang-row button.active,
+    .nav-mobile .lang-row button:hover {
+      border-color: var(--c-gold);
+      color: var(--c-gold);
+    }
+
+    /* i18n: todos los idiomas móvil funcionales */
+
+    @media (max-width: 900px) {
+      .nav-links, .btn-nav.desktop-only { display: none; }
+      .nav-toggle { display: flex; }
+      .lang-selector { display: none; }
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: var(--nav-h);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Signature element: a large ghosted "Y" anchored in the background */
+    .hero::before {
+      content: 'Y';
+      position: absolute;
+      right: -4vw;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--ff-display);
+      font-size: clamp(300px, 38vw, 600px);
+      font-weight: 300;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(95, 163, 160, 0.1);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: var(--sp-16);
+      min-height: calc(100vh - var(--nav-h));
+      padding: var(--sp-24) var(--sp-6);
+      max-width: var(--max-w);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-content {}
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-3);
+      font-size: var(--fs-xs);
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-bottom: var(--sp-6);
+      padding: 6px 14px 6px 0;
+      border-left: 2px solid var(--c-gold);
+      padding-left: 12px;
+    }
+
+    .hero-eyebrow::before { display: none; }
+
+    .hero-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.6rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--c-dark);
+      margin-bottom: var(--sp-4);
+      letter-spacing: -0.01em;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--c-gold);
+    }
+
+    .hero-tagline {
+      font-family: var(--ff-body);
+      font-size: var(--fs-xs);
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--c-mid);
+      margin-bottom: var(--sp-8);
+      padding-bottom: var(--sp-8);
+      border-bottom: 1px solid var(--c-bg-alt);
+    }
+
+    .hero-desc {
+      font-size: var(--fs-md);
+      font-weight: 300;
+      color: var(--c-mid);
+      line-height: 1.8;
+      max-width: 480px;
+      margin-bottom: var(--sp-12);
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-4);
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--c-dark);
+      color: #FFFFFF;
+      font-family: var(--ff-body);
+      font-size: var(--fs-sm);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      border-radius: var(--radius);
+      transition: background var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
+      border: 1px solid var(--c-dark);
+      min-height: 48px;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      background: #4A8F8C;
+      border-color: #4A8F8C;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: transparent;
+      color: var(--c-dark);
+      font-family: var(--ff-body);
+      font-size: var(--fs-sm);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      border-radius: var(--radius);
+      border: 1px solid var(--c-light);
+      transition: border-color var(--transition), color var(--transition), background var(--transition), transform var(--transition);
+      min-height: 48px;
+      white-space: nowrap;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--c-gold);
+      color: var(--c-gold);
+      background: rgba(95,163,160,0.04);
+      transform: translateY(-1px);
+    }
+
+    /* Hero decorative right panel */
+    .hero-visual {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-4);
+      position: relative;
+    }
+
+    .hero-card {
+      background: var(--c-white);
+      border: 1px solid var(--c-bg-alt);
+      border-radius: var(--radius-md);
+      padding: var(--sp-6);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    }
+
+    .hero-card-label {
+      font-size: var(--fs-xs);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-bottom: var(--sp-2);
+    }
+
+    .hero-card-value {
+      font-family: var(--ff-display);
+      font-size: var(--fs-2xl);
+      font-weight: 400;
+      color: var(--c-dark);
+    }
+
+    .hero-services-preview {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+
+    .hero-svc {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      padding: var(--sp-3) var(--sp-4);
+      background: var(--c-white);
+      border: 1px solid var(--c-bg-alt);
+      border-radius: var(--radius-md);
+      font-size: var(--fs-sm);
+      color: var(--c-mid);
+      transition: border-color var(--transition), color var(--transition);
+    }
+
+    .hero-svc:hover {
+      border-color: var(--c-gold);
+      color: var(--c-dark);
+    }
+
+    .hero-svc-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--c-gold);
+      flex-shrink: 0;
+    }
+
+    /* Hero scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: var(--sp-8);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-2);
+      font-size: var(--fs-xs);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--c-light);
+      z-index: 1;
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--c-gold), transparent);
+      animation: scrollLine 2s ease infinite;
+    }
+
+    @keyframes scrollLine {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      50.01% { transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding: var(--sp-16) var(--sp-4) var(--sp-12);
+        gap: var(--sp-10);
+      }
+
+      .hero::before {
+        right: -15vw;
+        font-size: clamp(180px, 55vw, 300px);
+        opacity: 0.5;
+      }
+
+      .hero-desc { max-width: 100%; }
+      .hero-scroll { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      /* En móvil pequeño, ocultar el panel visual para que el hero respire */
+      .hero-visual { display: none; }
+      .hero-inner { gap: 0; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+    }
+
+    @media (max-width: 375px) {
+      .hero-inner { padding: var(--sp-12) var(--sp-4) var(--sp-8); }
+      .hero-title { font-size: 2.1rem; }
+      .hero-eyebrow { font-size: 0.65rem; }
+    }
+
+    /* ============================================================
+       DIFERENCIAL
+    ============================================================ */
+    .diferencial {
+      padding: var(--sp-32) 0;
+      background: var(--c-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .diferencial::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(95,163,160,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .diferencial-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-24);
+      align-items: center;
+    }
+
+    .diferencial-left {}
+
+    .diferencial-headline {
+      font-family: var(--ff-display);
+      font-size: clamp(var(--fs-2xl), 4vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--c-white);
+      margin-bottom: var(--sp-8);
+    }
+
+    .diferencial-headline em {
+      font-style: italic;
+      color: var(--c-gold);
+    }
+
+    .diferencial-text {
+      font-size: var(--fs-md);
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.8;
+      margin-bottom: var(--sp-8);
+    }
+
+    .diferencial-right {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-4);
+    }
+
+    .diferencial-pillar {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-4);
+      padding: var(--sp-6);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius-md);
+      transition: border-color var(--transition);
+    }
+
+    .diferencial-pillar:hover {
+      border-color: rgba(95,163,160,0.3);
+    }
+
+    .diferencial-pillar-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(95,163,160,0.12);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .diferencial-pillar-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--c-gold);
+    }
+
+    .diferencial-pillar-title {
+      font-size: var(--fs-base);
+      font-weight: 500;
+      color: var(--c-white);
+      margin-bottom: 4px;
+    }
+
+    .diferencial-pillar-text {
+      font-size: var(--fs-sm);
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .diferencial-inner {
+        grid-template-columns: 1fr;
+        gap: var(--sp-12);
+      }
+    }
+
+    /* ============================================================
+       SERVICIOS
+    ============================================================ */
+    .servicios {
+      padding: var(--sp-32) 0;
+    }
+
+    @media (max-width: 768px) {
+      .servicios, .proceso, .portfolio, .casos, .evolucion, .sobre, .contacto, .diferencial {
+        padding-top: var(--sp-20);
+        padding-bottom: var(--sp-20);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .servicios, .proceso, .portfolio, .casos, .evolucion, .sobre, .contacto, .diferencial {
+        padding-top: var(--sp-16);
+        padding-bottom: var(--sp-16);
+      }
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto var(--sp-16);
+    }
+
+    .section-header .section-title {
+      font-size: clamp(var(--fs-2xl), 4vw, 3rem);
+      margin-bottom: var(--sp-4);
+    }
+
+    .section-header .section-desc {
+      font-size: clamp(var(--fs-base), 2vw, var(--fs-md));
+      color: var(--c-mid);
+      font-weight: 300;
+      line-height: 1.75;
+    }
+
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4);
+    }
+
+    .servicio-card {
+      padding: var(--sp-8);
+      background: var(--c-white);
+      border: 1px solid var(--c-bg-alt);
+      border-radius: var(--radius-md);
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .servicio-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--c-gold);
+      transition: width var(--transition-slow);
+    }
+
+    .servicio-card:hover {
+      border-color: rgba(95,163,160,0.2);
+      box-shadow: 0 8px 32px rgba(95,163,160,0.08);
+      transform: translateY(-3px);
+    }
+
+    .servicio-card:hover::after { width: 100%; }
+
+    .servicio-num {
+      font-family: var(--ff-body);
+      font-size: 10px;
+      color: var(--c-gold);
+      letter-spacing: 0.18em;
+      margin-bottom: var(--sp-6);
+      display: block;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .servicio-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: var(--sp-6);
+      color: var(--c-dark);
+    }
+
+    .servicio-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: currentColor;
+      stroke-width: 1.5;
+    }
+
+    .servicio-title {
+      font-family: var(--ff-display);
+      font-size: var(--fs-xl);
+      font-weight: 400;
+      color: var(--c-dark);
+      margin-bottom: var(--sp-3);
+      line-height: 1.2;
+    }
+
+    .servicio-text {
+      font-size: var(--fs-sm);
+      color: var(--c-mid);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 1024px) {
+      .servicios-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .servicios-grid { grid-template-columns: 1fr; gap: var(--sp-3); }
+      .servicio-card { padding: var(--sp-6); }
+    }
+
+    /* ============================================================
+       PROCESO
+    ============================================================ */
+    .proceso {
+      padding: var(--sp-32) 0;
+      background: var(--c-bg-alt);
+    }
+
+    .proceso-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-6);
+      margin-top: var(--sp-16);
+    }
+
+    .proceso-step {
+      position: relative;
+      padding: var(--sp-8) var(--sp-6);
+      background: var(--c-bg);
+      border-radius: var(--radius-md);
+      border: 1px solid transparent;
+      transition: border-color var(--transition);
+    }
+
+    .proceso-step:hover {
+      border-color: var(--c-gold-light);
+    }
+
+    .proceso-step-num {
+      font-family: var(--ff-display);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--c-gold);
+      opacity: 0.25;
+      line-height: 1;
+      margin-bottom: var(--sp-3);
+    }
+
+    .proceso-step-title {
+      font-family: var(--ff-display);
+      font-size: var(--fs-xl);
+      font-weight: 400;
+      color: var(--c-dark);
+      margin-bottom: var(--sp-3);
+    }
+
+    .proceso-step-text {
+      font-size: var(--fs-sm);
+      color: var(--c-mid);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 1024px) {
+      .proceso-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .proceso-grid { grid-template-columns: 1fr; gap: var(--sp-3); }
+    }
+
+    /* ============================================================
+       PORTFOLIO
+    ============================================================ */
+    .portfolio{padding:var(--sp-32) 0}.portfolio-showcase{margin-top:var(--sp-16);display:grid;grid-template-columns:1.45fr .8fr;gap:var(--sp-6)}.portfolio-feature,.portfolio-mini{background:var(--c-white);border:1px solid var(--c-bg-alt);border-radius:var(--radius-md);overflow:hidden;transition:transform var(--transition),box-shadow var(--transition)}.portfolio-feature:hover,.portfolio-mini:hover{transform:translateY(-4px);box-shadow:0 16px 45px rgba(0,0,0,.08)}.portfolio-feature-visual{height:390px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}.portfolio-ali{background:linear-gradient(135deg,#eef2ef,#dfe8e5)}.portfolio-browser{width:72%;height:70%;background:#fff;border-radius:10px;box-shadow:0 24px 55px rgba(0,0,0,.16);overflow:hidden;transform:rotate(-2deg)}.portfolio-browser-bar{height:22px;background:#ecebe7;display:flex;align-items:center;gap:5px;padding-left:10px}.portfolio-browser-bar span{width:5px;height:5px;border-radius:50%;background:#a7a7a3}.portfolio-browser-content{padding:30px 34px;color:#1b1d1c}.portfolio-browser-content small{font-size:8px;letter-spacing:.18em;color:#6f7773}.portfolio-browser-content strong{display:block;margin:14px 0;font-family:var(--ff-display);font-weight:400;font-size:28px;line-height:1.02}.portfolio-browser-content i{display:block;width:68%;height:5px;background:#d7dcd8;margin:7px 0}.portfolio-browser-content i.short{width:43%}.portfolio-browser-block{height:72px;margin-top:18px;background:linear-gradient(135deg,#dce7e3,#eef1ed)}.portfolio-status{position:absolute;top:20px;right:20px;padding:7px 12px;background:rgba(255,255,255,.8);border:1px solid rgba(95,163,160,.25);color:var(--c-gold);font-size:10px;letter-spacing:.12em;text-transform:uppercase;backdrop-filter:blur(6px)}.portfolio-feature-body{padding:28px}.portfolio-side-grid{display:grid;grid-template-rows:1fr 1fr;gap:var(--sp-6)}.portfolio-mini{display:grid;grid-template-columns:42% 58%;min-height:210px}.portfolio-mini-visual{display:flex;align-items:flex-end;padding:20px;color:#fff;font-family:var(--ff-display);font-size:28px;letter-spacing:.05em}.portfolio-mini-visual.realestate{background:linear-gradient(145deg,#aebfb7,#667e76)}.portfolio-mini-visual.restaurant{background:linear-gradient(145deg,#8e8778,#3e3a33)}.portfolio-mini-body{padding:22px}.portfolio-mini-body h3{margin:6px 0;font-family:var(--ff-display);font-size:25px;font-weight:400;color:var(--c-dark)}.portfolio-mini-body p{margin:0 0 14px;color:var(--c-mid);font-size:13px}.portfolio-automation{margin-top:var(--sp-8);padding:30px;border-radius:var(--radius-md);background:var(--c-dark);color:#fff;display:grid;grid-template-columns:.85fr 1.15fr;gap:35px;align-items:center}.portfolio-automation h3{font-family:var(--ff-display);font-size:32px;font-weight:400;margin:8px 0 10px}.portfolio-automation p{margin:0;color:#b8b8b4;font-size:14px;max-width:480px}.portfolio-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:12px}.portfolio-flow>div:not(.flow-arrow){padding:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);border-radius:10px}.portfolio-flow b{display:block;color:var(--c-gold);font-size:10px;letter-spacing:.15em;margin-bottom:8px}.portfolio-flow span{display:block;font-size:14px;font-weight:500}.portfolio-flow small{display:block;margin-top:5px;color:#9d9d99;font-size:11px}.flow-arrow{color:var(--c-gold);font-size:20px}.portfolio-next{margin-top:28px;padding:20px 0;border-bottom:1px solid var(--c-bg-alt);display:flex;justify-content:space-between;gap:20px;align-items:center;font-family:var(--ff-display);font-size:25px;color:var(--c-dark)}.portfolio-next a{font-family:var(--ff-body);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-gold)}@media (max-width:1024px){.portfolio-showcase{grid-template-columns:1fr}.portfolio-side-grid{grid-template-columns:1fr 1fr;grid-template-rows:none}.portfolio-automation{grid-template-columns:1fr}}@media (max-width:768px){.portfolio-side-grid{grid-template-columns:1fr}.portfolio-feature-visual{height:270px}.portfolio-browser{width:86%;height:68%}.portfolio-browser-content{padding:22px}.portfolio-browser-content strong{font-size:23px}.portfolio-mini{grid-template-columns:1fr}.portfolio-mini-visual{min-height:150px}.portfolio-flow{grid-template-columns:1fr}.flow-arrow{transform:rotate(90deg);justify-self:center}.portfolio-next{display:block;font-size:22px}.portfolio-next a{display:inline-block;margin-top:12px}}
+
+    /* ============================================================
+       CASOS DE USO
+    ============================================================ */
+    .casos {
+      padding: var(--sp-32) 0;
+      background: var(--c-bg-alt);
+    }
+
+    .casos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-6);
+      margin-top: var(--sp-16);
+    }
+
+    .caso-card {
+      padding: var(--sp-8);
+      background: var(--c-white);
+      border-radius: var(--radius-md);
+      border: 1px solid transparent;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .caso-card:hover {
+      border-color: var(--c-gold-light);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    .caso-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--c-gold-light);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--sp-6);
+      transition: background var(--transition);
+    }
+
+    .caso-card:hover .caso-icon {
+      background: rgba(95,163,160,0.15);
+    }
+
+    .caso-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--c-gold);
+      stroke-width: 1.5;
+    }
+
+    .caso-title {
+      font-family: var(--ff-display);
+      font-size: var(--fs-xl);
+      font-weight: 400;
+      color: var(--c-dark);
+      margin-bottom: var(--sp-3);
+    }
+
+    .caso-desc {
+      font-size: var(--fs-sm);
+      color: var(--c-mid);
+      line-height: 1.7;
+      margin-bottom: var(--sp-4);
+    }
+
+    .caso-note {
+      font-size: var(--fs-xs);
+      color: var(--c-light);
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .casos-grid { grid-template-columns: 1fr; }
+      .caso-card { padding: var(--sp-6); }
+    }
+
+    /* ============================================================
+       EVOLUCIÓN
+    ============================================================ */
+    .evolucion {
+      padding: var(--sp-32) 0;
+      background: var(--c-dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .evolucion::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 60%, rgba(95,163,160,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .evolucion .section-label { justify-content: center; display: flex; }
+
+    .evolucion-title {
+      font-family: var(--ff-display);
+      font-size: clamp(var(--fs-2xl), 4vw, 3rem);
+      font-weight: 300;
+      color: var(--c-white);
+      margin-bottom: var(--sp-4);
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .evolucion-title em {
+      font-style: italic;
+      color: var(--c-gold);
+    }
+
+    .evolucion-subtitle {
+      font-size: var(--fs-md);
+      color: rgba(255,255,255,0.45);
+      font-weight: 300;
+      max-width: 520px;
+      margin: 0 auto var(--sp-16);
+      line-height: 1.75;
+    }
+
+    .evolucion-track {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: var(--sp-4);
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .evolucion-track::-webkit-scrollbar { display: none; }
+
+    .evolucion-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-2);
+      flex-shrink: 0;
+    }
+
+    .evolucion-step-box {
+      padding: 12px 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-md);
+      font-family: var(--ff-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      transition: all var(--transition);
+      min-width: 110px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .evolucion-step.current .evolucion-step-box {
+      border-color: var(--c-gold);
+      color: var(--c-gold);
+      background: rgba(95,163,160,0.08);
+    }
+
+    .evolucion-arrow {
+      font-size: var(--fs-sm);
+      color: rgba(255,255,255,0.15);
+      padding: 0 var(--sp-2);
+      flex-shrink: 0;
+    }
+
+    .evolucion-step-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.2);
+      text-transform: uppercase;
+    }
+
+    .evolucion-step.current .evolucion-step-label {
+      color: var(--c-gold);
+    }
+
+    /* ============================================================
+       SOBRE YUNAHM
+    ============================================================ */
+    .sobre {
+      padding: var(--sp-32) 0;
+    }
+
+    .sobre-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-24);
+      align-items: center;
+    }
+
+    .sobre-left {}
+
+    .sobre-title {
+      font-family: var(--ff-display);
+      font-size: clamp(var(--fs-2xl), 4vw, 3rem);
+      font-weight: 300;
+      color: var(--c-dark);
+      margin-bottom: var(--sp-6);
+      line-height: 1.15;
+    }
+
+    .sobre-title em {
+      font-style: italic;
+      color: var(--c-gold);
+    }
+
+    .sobre-text {
+      font-size: var(--fs-md);
+      font-weight: 300;
+      color: var(--c-mid);
+      line-height: 1.8;
+      margin-bottom: var(--sp-4);
+    }
+
+    /* .sobre-placeholder eliminado — sección completada con contenido real */
+
+    .sobre-right {}
+
+    .sobre-valores {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-4);
+    }
+
+    .sobre-valor {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-4);
+      padding: var(--sp-4) 0;
+      border-bottom: 1px solid var(--c-bg-alt);
+    }
+
+    .sobre-valor:last-child { border-bottom: none; }
+
+    .sobre-valor-num {
+      font-family: var(--ff-display);
+      font-size: var(--fs-xl);
+      font-weight: 300;
+      color: var(--c-gold-light);
+      flex-shrink: 0;
+      width: 36px;
+    }
+
+    .sobre-valor-content {}
+
+    .sobre-valor-title {
+      font-size: var(--fs-base);
+      font-weight: 500;
+      color: var(--c-dark);
+      margin-bottom: 4px;
+    }
+
+    .sobre-valor-text {
+      font-size: var(--fs-sm);
+      color: var(--c-mid);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .sobre-inner { grid-template-columns: 1fr; gap: var(--sp-12); }
+      .sobre-title { font-size: clamp(1.8rem, 5vw, 2.5rem); }
+    }
+
+    /* ============================================================
+       CONTACTO
+    ============================================================ */
+    .contacto {
+      padding: var(--sp-32) 0;
+      background: var(--c-bg-alt);
+    }
+
+    .contacto-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: var(--sp-24);
+      align-items: start;
+    }
+
+    .contacto-left {}
+
+    .contacto-title {
+      font-family: var(--ff-display);
+      font-size: clamp(var(--fs-2xl), 3.5vw, 2.75rem);
+      font-weight: 300;
+      color: var(--c-dark);
+      line-height: 1.15;
+      margin-bottom: var(--sp-4);
+    }
+
+    .contacto-title em {
+      font-style: italic;
+      color: var(--c-gold);
+    }
+
+    .contacto-desc {
+      font-size: var(--fs-md);
+      font-weight: 300;
+      color: var(--c-mid);
+      line-height: 1.8;
+      margin-bottom: var(--sp-8);
+    }
+
+    .contacto-data {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-4);
+    }
+
+    .contacto-item {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      font-size: var(--fs-sm);
+      color: var(--c-mid);
+    }
+
+    .contacto-item svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--c-gold);
+      flex-shrink: 0;
+    }
+
+    .contacto-item a:hover { color: var(--c-gold); }
+
+    /* Form */
+    .form {
+      background: var(--c-white);
+      border-radius: var(--radius-md);
+      padding: var(--sp-8);
+      border: 1px solid var(--c-bg-alt);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-4);
+    }
+
+    .form-group {
+      margin-bottom: var(--sp-4);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-label {
+      font-size: var(--fs-xs);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--c-mid);
+      margin-bottom: var(--sp-2);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      padding: 12px 14px;
+      background: var(--c-bg);
+      border: 1px solid var(--c-bg-alt);
+      border-radius: var(--radius);
+      font-family: var(--ff-body);
+      font-size: var(--fs-sm);
+      color: var(--c-dark);
+      transition: border-color var(--transition);
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--c-gold);
+      background: var(--c-white);
+    }
+
+    .form-input.error,
+    .form-select.error,
+    .form-textarea.error {
+      border-color: #C0392B;
+    }
+
+    .form-error-msg {
+      font-size: var(--fs-xs);
+      color: #C0392B;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .form-error-msg.visible { display: block; }
+
+    .form-textarea { resize: vertical; min-height: 120px; }
+
+    .form-select-wrap { position: relative; }
+
+    .form-select-wrap::after {
+      content: '';
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 5px solid var(--c-mid);
+      pointer-events: none;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--c-dark);
+      color: var(--c-white);
+      font-family: var(--ff-body);
+      font-size: var(--fs-base);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-2);
+      margin-top: var(--sp-2);
+    }
+
+    .form-submit:hover {
+      background: #4A8F8C;
+      transform: translateY(-1px);
+    }
+
+    .form-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .form-status {
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      font-size: var(--fs-sm);
+      text-align: center;
+      display: none;
+    }
+
+    .form-status.success {
+      display: block;
+      background: #E8F5E9;
+      color: #2E7D32;
+      border: 1px solid #A5D6A7;
+    }
+
+    .form-status.error {
+      display: block;
+      background: #FFEBEE;
+      color: #C62828;
+      border: 1px solid #EF9A9A;
+    }
+
+    .form-note {
+      font-size: var(--fs-xs);
+      color: var(--c-light);
+      text-align: center;
+      margin-top: var(--sp-3);
+    }
+
+    @media (max-width: 900px) {
+      .contacto-inner { grid-template-columns: 1fr; gap: var(--sp-12); }
+      .contacto-title { font-size: clamp(1.8rem, 5vw, 2.5rem); }
+    }
+
+    @media (max-width: 640px) {
+      .form-row { grid-template-columns: 1fr; }
+      .form { padding: var(--sp-6); }
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      padding: var(--sp-12) 0;
+      background: var(--c-dark);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--sp-4);
+    }
+
+    @media (max-width: 600px) {
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--sp-3);
+      }
+      .footer-links { flex-wrap: wrap; gap: var(--sp-4); }
+    }
+
+    .footer-logo {
+      font-family: var(--ff-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      color: var(--c-white);
+    }
+
+    .footer-logo span { color: var(--c-gold); }
+
+    .footer-copy {
+      font-size: var(--fs-xs);
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: var(--sp-6);
+    }
+
+    .footer-links a {
+      font-size: var(--fs-xs);
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.08em;
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover { color: var(--c-gold); }
+
+    /* ============================================================
+       BACK TO TOP
+    ============================================================ */
+    .back-top {
+      position: fixed;
+      bottom: var(--sp-6);
+      right: var(--sp-6);
+      width: 44px;
+      height: 44px;
+      background: var(--c-dark);
+      color: var(--c-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity var(--transition), transform var(--transition), background var(--transition);
+      z-index: 50;
+      border: none;
+      cursor: pointer;
+    }
+
+    .back-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+
+    .back-top:hover { background: var(--c-gold); }
+
+    .back-top svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+    }
+
+    /* ============================================================
+       REDUCED MOTION
+    ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hero-scroll-line { animation: none; }
+      .nav-mobile { transition: none; }
+      * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+  </style>
+
+<style>
+/* YUNAHM V2 — visual polish */
+.btn-primary,.btn-secondary,.btn-nav,.form-submit{position:relative;overflow:hidden;box-shadow:0 6px 18px rgba(15,15,15,.10);transition:transform .24s ease,box-shadow .24s ease,background .24s ease,border-color .24s ease,color .24s ease}
+.btn-primary:after,.btn-secondary:after,.btn-nav:after,.form-submit:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.18) 50%,transparent 70%);transform:translateX(-120%);transition:transform .5s ease;pointer-events:none}
+.btn-primary:hover,.btn-secondary:hover,.btn-nav:hover,.form-submit:hover{transform:translateY(-4px);box-shadow:0 13px 28px rgba(15,15,15,.16)}
+.btn-primary:hover:after,.btn-secondary:hover:after,.btn-nav:hover:after,.form-submit:hover:after{transform:translateX(120%)}
+.btn-primary:active,.btn-secondary:active,.btn-nav:active,.form-submit:active{transform:translateY(-1px) scale(.985);box-shadow:0 6px 14px rgba(15,15,15,.12)}
+.hero-visual{perspective:1100px}
+.hero-visual:before{content:"";position:absolute;width:260px;height:260px;right:6%;top:5%;border-radius:38% 62% 55% 45%/45% 40% 60% 55%;border:1px solid rgba(95,163,160,.22);background:radial-gradient(circle at 35% 30%,rgba(123,191,189,.28),rgba(95,163,160,.04) 48%,transparent 70%);filter:blur(.1px);transform:rotate(18deg);animation:yunahmFloat 8s ease-in-out infinite;pointer-events:none;z-index:-1}
+.hero-visual:after{content:"Y";position:absolute;right:14%;top:2%;font-family:var(--ff-display);font-size:250px;font-weight:300;color:transparent;-webkit-text-stroke:1px rgba(95,163,160,.14);transform:rotate(-7deg);pointer-events:none;z-index:-1}
+.hero-card{transition:transform .35s ease,box-shadow .35s ease}.hero-card:hover{transform:translateY(-7px) rotateX(1deg) rotateY(-1deg);box-shadow:0 18px 40px rgba(15,15,15,.10)}
+.hero-svc{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}.hero-svc:hover{transform:translateX(5px);box-shadow:0 8px 20px rgba(95,163,160,.08)}
+.servicio-card,.caso-card,.project-card,.proceso-step,.diferencial-pillar{transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease}.servicio-card:hover,.caso-card:hover,.project-card:hover{transform:translateY(-7px);box-shadow:0 16px 36px rgba(15,15,15,.09)}
+@keyframes yunahmFloat{0%,100%{transform:rotate(18deg) translate3d(0,0,0)}50%{transform:rotate(25deg) translate3d(0,-12px,0)}}
+@media(max-width:640px){.hero-visual:before{width:170px;height:170px;right:-2%;top:0}.hero-visual:after{font-size:170px;right:4%;top:0}}
+</style>
+
+<style id="yunahm-relief-services">
+/* YUNAHM — raised service cards */
+.servicios-grid .servicio-card,
+.servicios .servicio-card,
+.servicio-card {
+  position: relative;
+  transform: translateY(0);
+  border: 1px solid rgba(24, 34, 48, .12);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(242,245,247,.92));
+  box-shadow:
+    10px 10px 24px rgba(24,34,48,.12),
+    -7px -7px 18px rgba(255,255,255,.95),
+    inset 0 1px 0 rgba(255,255,255,.95);
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+.servicios-grid .servicio-card:hover,
+.servicios .servicio-card:hover,
+.servicio-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(24, 34, 48, .2);
+  box-shadow:
+    14px 16px 30px rgba(24,34,48,.16),
+    -8px -8px 20px rgba(255,255,255,.98),
+    inset 0 1px 0 rgba(255,255,255,1);
+}
+.servicios-grid .servicio-card:active,
+.servicios .servicio-card:active,
+.servicio-card:active {
+  transform: translateY(-2px);
+}
+.servicios-grid .servicio-card::after,
+.servicios .servicio-card::after,
+.servicio-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,.05);
+}
+</style>
+
+
+<style id="yunahm-relief-services-v3">
+/* Relieve real aplicado a las tarjetas .servicio-card */
+.servicio-card{
+  position:relative !important;
+  overflow:hidden;
+  transform:translateY(0);
+  border:1px solid rgba(25,35,48,.14) !important;
+  border-radius:20px !important;
+  background:linear-gradient(145deg,#ffffff 0%,#f1f4f6 100%) !important;
+  box-shadow:12px 14px 28px rgba(22,32,45,.16),-8px -8px 18px rgba(255,255,255,.95),inset 0 1px 0 rgba(255,255,255,.98) !important;
+  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease !important;
+}
+.servicio-card:before{
+  content:"";position:absolute;left:12px;right:12px;top:0;height:1px;
+  background:rgba(255,255,255,.98);pointer-events:none;
+}
+.servicio-card:hover{
+  transform:translateY(-8px) !important;
+  border-color:rgba(25,35,48,.22) !important;
+  box-shadow:16px 20px 34px rgba(22,32,45,.20),-9px -9px 20px rgba(255,255,255,.98),inset 0 1px 0 #fff !important;
+}
+.servicio-card:active{transform:translateY(-2px) !important;}
+</style>
+
+<style id="yunahm-relief-nav">
+/* Navegación con efecto de relieve */
+nav a,
+.nav-links a,
+.nav-menu a {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:8px;
+  border:1px solid rgba(24,34,48,.10);
+  background:linear-gradient(145deg,#ffffff,#eef1f4);
+  box-shadow:
+    5px 5px 12px rgba(24,34,48,.12),
+    -4px -4px 10px rgba(255,255,255,.95),
+    inset 0 1px 0 rgba(255,255,255,.95);
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease;
+}
+nav a:hover,
+.nav-links a:hover,
+.nav-menu a:hover {
+  transform:translateY(-3px);
+  border-color:rgba(24,34,48,.18);
+  background:linear-gradient(145deg,#ffffff,#f1f4f7);
+  box-shadow:
+    8px 9px 18px rgba(24,34,48,.15),
+    -5px -5px 12px rgba(255,255,255,.98),
+    inset 0 1px 0 rgba(255,255,255,1);
+}
+nav a:active,
+.nav-links a:active,
+.nav-menu a:active {
+  transform:translateY(-1px);
+  box-shadow:
+    2px 2px 6px rgba(24,34,48,.12),
+    -2px -2px 6px rgba(255,255,255,.9),
+    inset 0 2px 4px rgba(24,34,48,.06);
+}
+</style>
+
+
+<style id="yunahm-footer-only-fix">
+/* SOLO corregimos el pie de página. No toca las tarjetas de Servicios. */
+footer a,
+.footer a,
+.site-footer a {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  padding: 0 !important;
+}
+footer a:hover,
+.footer a:hover,
+.site-footer a:hover {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+</style>
+
+
+<style id="yunahm-brand-no-relief">
+/* La marca YUNAHM no es un botón: no lleva relieve. */
+header a.logo,
+header a.brand,
+header .logo a,
+header .brand a,
+header a[href="#inicio"],
+header a[href="#home"] {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  padding: 0 !important;
+}
+header a.logo:hover,
+header a.brand:hover,
+header .logo a:hover,
+header .brand a:hover,
+header a[href="#inicio"]:hover,
+header a[href="#home"]:hover {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+</style>
+
+
+<style id="yunahm-logo-flat">
+/* YUNAHM es la marca, no un botón: siempre plana y sin relieve. */
+header .nav-logo,
+header a.nav-logo {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  padding: 0 !important;
+}
+header .nav-logo:hover,
+header a.nav-logo:hover,
+header .nav-logo:active,
+header a.nav-logo:active {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+</style>
+
+
+<style id="yunahm-hero-v9">
+/* ============================================================
+   HERO V9 — más presencia visual, sin cambiar el contenido
+   ============================================================ */
+
+/* Profundidad suave en el panel derecho */
+.hero-visual {
+  perspective: 1200px;
+  isolation: isolate;
+}
+
+/* Elemento 3D decorativo: sutil, tecnológico y sin robar protagonismo */
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  width: clamp(190px, 25vw, 310px);
+  height: clamp(190px, 25vw, 310px);
+  right: 5%;
+  top: 4%;
+  border-radius: 42% 58% 63% 37% / 48% 40% 60% 52%;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255,255,255,.96) 0 8%, rgba(123,191,189,.62) 22%, rgba(95,163,160,.20) 48%, rgba(95,163,160,0) 72%),
+    linear-gradient(145deg, rgba(255,255,255,.75), rgba(95,163,160,.08));
+  border: 1px solid rgba(95,163,160,.22);
+  box-shadow:
+    18px 24px 50px rgba(15,15,15,.10),
+    inset -12px -12px 24px rgba(54,100,99,.08),
+    inset 10px 10px 20px rgba(255,255,255,.85);
+  filter: saturate(.92);
+  transform: rotate(18deg) translateZ(0);
+  animation: yunahmHeroFloat 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-visual::after {
+  content: "Y";
+  position: absolute;
+  right: 13%;
+  top: 0;
+  font-family: var(--ff-display);
+  font-size: clamp(180px, 20vw, 260px);
+  font-weight: 300;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(95,163,160,.18);
+  transform: rotate(-7deg);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-card {
+  position: relative;
+  z-index: 2;
+  transform: translateZ(18px);
+  box-shadow:
+    12px 16px 28px rgba(15,15,15,.12),
+    -7px -7px 18px rgba(255,255,255,.92),
+    inset 0 1px 0 rgba(255,255,255,.98);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.hero-card:hover {
+  transform: translateY(-5px) translateZ(22px);
+  box-shadow:
+    16px 22px 34px rgba(15,15,15,.15),
+    -8px -8px 20px rgba(255,255,255,.96),
+    inset 0 1px 0 rgba(255,255,255,1);
+}
+
+.hero-svc {
+  position: relative;
+  z-index: 2;
+  box-shadow:
+    7px 8px 15px rgba(15,15,15,.08),
+    -4px -4px 10px rgba(255,255,255,.92),
+    inset 0 1px 0 rgba(255,255,255,.9);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.hero-svc:hover {
+  transform: translateX(5px);
+  border-color: rgba(95,163,160,.35);
+  box-shadow:
+    10px 12px 20px rgba(15,15,15,.11),
+    -5px -5px 12px rgba(255,255,255,.96);
+}
+
+@keyframes yunahmHeroFloat {
+  0%, 100% { transform: rotate(18deg) translate3d(0,0,0); }
+  50% { transform: rotate(22deg) translate3d(-7px,-10px,0); }
+}
+
+@media (max-width: 900px) {
+  .hero-visual::before {
+    right: -2%;
+    width: 220px;
+    height: 220px;
+  }
+  .hero-visual::after {
+    right: 5%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-visual::before { animation: none; }
+  .hero-card, .hero-svc { transition: none; }
+}
+</style>
+
+
+<style id="yunahm-about-v10">
+/* ============================================================
+   SOBRE YUNAHM — misma profundidad visual que la portada
+   ============================================================ */
+#sobre .difference-grid,
+.about-grid,
+.about-cards {
+  perspective: 1000px;
+}
+
+#sobre .difference-card,
+#sobre .about-card,
+#sobre .feature-card {
+  position: relative;
+  border: 1px solid rgba(24,34,48,.10);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(242,245,247,.94));
+  box-shadow:
+    9px 10px 22px rgba(24,34,48,.10),
+    -6px -6px 15px rgba(255,255,255,.95),
+    inset 0 1px 0 rgba(255,255,255,.98);
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+
+#sobre .difference-card:hover,
+#sobre .about-card:hover,
+#sobre .feature-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(95,163,160,.24);
+  box-shadow:
+    13px 16px 28px rgba(24,34,48,.14),
+    -7px -7px 18px rgba(255,255,255,.98),
+    inset 0 1px 0 rgba(255,255,255,1);
+}
+
+/* Los títulos/enlaces siguen siendo contenido, no botones */
+#sobre a:not(.btn) {
+  box-shadow: none;
+  background: transparent;
+  border: 0;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #sobre .difference-card,
+  #sobre .about-card,
+  #sobre .feature-card {
+    transition: none;
+  }
+}
+</style>
+
+
+<style id="yunahm-proceso-relieve">
+/* PROCESO: mismo relieve aprobado, solo para las seis tarjetas */
+.proceso-grid .proceso-step {
+  position: relative;
+  border: 1px solid rgba(24,34,48,.10);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(242,245,247,.94));
+  box-shadow:
+    9px 10px 22px rgba(24,34,48,.10),
+    -6px -6px 15px rgba(255,255,255,.95),
+    inset 0 1px 0 rgba(255,255,255,.98);
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+
+.proceso-grid .proceso-step:hover {
+  transform: translateY(-6px);
+  border-color: rgba(95,163,160,.24);
+  box-shadow:
+    13px 16px 28px rgba(24,34,48,.14),
+    -7px -7px 18px rgba(255,255,255,.98),
+    inset 0 1px 0 rgba(255,255,255,1);
+}
+
+.proceso-grid .proceso-step:active {
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proceso-grid .proceso-step { transition: none; }
+}
+</style>
+
+
+<style id="yunahm-whatsapp-cta">
+.whatsapp-cta{display:inline-flex;align-items:center;justify-content:center;margin-top:16px;padding:14px 22px;border:1px solid currentColor;text-decoration:none;font-size:13px;line-height:1.2}
+.whatsapp-cta:hover{opacity:.82}
+</style>
+
+
+<style id="yunahm-contact-email-box">
+.contacto-email-box{
+  border:1px solid currentColor;
+  padding:18px 22px;
+  width:100%;
+  box-sizing:border-box;
+  margin-bottom:16px;
+}
+.contacto-email-box a{ text-decoration:none; }
+</style>
+
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Navegación principal">
+    <div class="nav-inner">
+
+      <div class="nav-logo" aria-label="YUNAHM">
+        YUNA<span>H</span>M
+      </div>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#sobre" data-i18n="nav.about">Sobre YUNAHM</a></li>
+        <li><a href="#servicios" data-i18n="nav.services">Servicios</a></li>
+        <li><a href="#proceso" data-i18n="nav.process">Proceso</a></li>
+        <li><a href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
+        <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <div class="lang-selector" role="navigation" aria-label="Selector de idioma">
+          <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Cambiar idioma">
+            <span id="langCurrent">ES</span>
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M1 1l4 4 4-4"/>
+            </svg>
+          </button>
+          <div class="lang-dropdown" id="langDropdown" role="menu">
+            <button class="active" role="menuitem" data-lang="es">Español</button>
+            <button role="menuitem" data-lang="en">English</button>
+            <button role="menuitem" data-lang="de">Deutsch</button>
+          </div>
+        </div>
+
+        <a href="#contacto" class="btn-nav desktop-only" data-i18n="nav.cta" data-i18n-aria="nav.cta" aria-label="Empezar un proyecto">Empezar un proyecto</a>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMobile">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="nav-mobile" id="navMobile" role="navigation" aria-label="Menú principal móvil">
+    <a href="#sobre" data-i18n="nav.about">Sobre YUNAHM</a>
+    <a href="#servicios" data-i18n="nav.services">Servicios</a>
+    <a href="#proceso" data-i18n="nav.process">Proceso</a>
+    <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
+    <a href="#contacto" data-i18n="nav.contact">Contacto</a>
+    <a href="#contacto" class="btn-nav" data-i18n="nav.cta">Empezar un proyecto</a>
+    <div class="lang-row" aria-label="Seleccionar idioma">
+      <button class="active" data-mobile-lang="es">ES</button>
+      <button data-mobile-lang="en">EN</button>
+      <button data-mobile-lang="de">DE</button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero" id="inicio" aria-label="Portada">
+    <div class="hero-inner container">
+
+      <div class="hero-content">
+        <span class="hero-eyebrow" data-i18n="hero.eyebrow">Soluciones digitales para negocios modernos</span>
+
+        <h1 class="hero-title">
+          Diseñamos el<br>
+          futuro <em>digital</em><br>
+          de tu negocio.
+        </h1>
+
+        <p class="hero-tagline" data-i18n="hero.tagline">Web · Diseño · Automatización · IA · Software</p>
+
+        <p class="hero-desc">
+<span data-i18n="hero.desc">No hacemos solo páginas web. Detectamos lo que frena tu negocio, diseñamos la solución y la construimos con tecnología. Sin plantillas. Sin atajos.</span>
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contacto" class="btn-primary" aria-label="Empezar un proyecto">
+            <span data-i18n="nav.cta">Empezar un proyecto</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="#proyectos" class="btn-secondary" data-i18n-aria="hero.btn2" aria-label="Ver proyectos"><span data-i18n="hero.btn2">Ver proyectos</span></a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-card">
+          <div class="hero-card-label" data-i18n="hero.card.label">Enfoque</div>
+          <div class="hero-card-value" style="font-size:1.5rem;line-height:1.4;font-weight:300;color:var(--c-mid)" data-i18n="hero.card.value">Cada negocio es diferente.<br><span style="color:var(--c-dark)">Cada solución también.</span></div>
+        </div>
+        <div class="hero-services-preview">
+          <div class="hero-svc"><span class="hero-svc-dot"></span><span data-i18n="svc1.title">Diseño y desarrollo web</span></div>
+          <div class="hero-svc"><span class="hero-svc-dot"></span><span data-i18n="svc2.title">Diseño digital</span></div>
+          <div class="hero-svc"><span class="hero-svc-dot"></span><span data-i18n="svc3.title">Automatización</span></div>
+          <div class="hero-svc"><span class="hero-svc-dot"></span><span data-i18n="svc4.title">Inteligencia artificial</span></div>
+          <div class="hero-svc"><span class="hero-svc-dot"></span><span data-i18n="svc5.title">Soluciones para empresas</span></div>
+          <div class="hero-svc"><span class="hero-svc-dot"></span><span data-i18n="svc6.title">Software</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="hero-scroll-line"></div>
+      <span data-i18n="hero.scroll">Desplaza</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       DIFERENCIAL
+  ============================================================ -->
+  <section class="diferencial" id="diferencial" aria-labelledby="dif-title">
+    <div class="container">
+      <div class="diferencial-inner">
+
+        <div class="diferencial-left reveal">
+          <span class="section-label" data-i18n="dif.label">Nuestra filosofía</span>
+          <h2 class="diferencial-headline" id="dif-title">
+<span data-i18n="dif.title.line1">No hacemos solo</span><br><em data-i18n="dif.title.line2">páginas web.</em>
+          </h2>
+          <p class="diferencial-text">
+<span data-i18n="dif.text">Cada negocio tiene necesidades diferentes. Analizamos lo que necesitas, diseñamos la solución y utilizamos tecnología para convertirla en algo real.</span>
+          </p>
+          <a href="#servicios" class="btn-secondary" style="border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.7)">
+            <span data-i18n="dif.btn">Explorar servicios</span>
+          </a>
+        </div>
+
+        <div class="diferencial-right reveal">
+
+          <div class="diferencial-pillar">
+            <div class="diferencial-pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+              </svg>
+            </div>
+            <div>
+              <div class="diferencial-pillar-title" data-i18n="dif.p1.title">Descubrimos el problema real</div>
+              <div class="diferencial-pillar-text" data-i18n="dif.p1.text">Antes de proponer cualquier solución, entendemos cómo funciona tu negocio y qué frena su crecimiento.</div>
+            </div>
+          </div>
+
+          <div class="diferencial-pillar">
+            <div class="diferencial-pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="diferencial-pillar-title" data-i18n="dif.p2.title">Diseñamos sin plantillas genéricas</div>
+              <div class="diferencial-pillar-text" data-i18n="dif.p2.text">Cada proyecto tiene una identidad propia. No aplicamos la misma solución a todos los clientes.</div>
+            </div>
+          </div>
+
+          <div class="diferencial-pillar">
+            <div class="diferencial-pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <div>
+              <div class="diferencial-pillar-title" data-i18n="dif.p3.title">Tecnología que trabaja para ti</div>
+              <div class="diferencial-pillar-text" data-i18n="dif.p3.text">Automatización, inteligencia artificial y software como herramientas al servicio de tu negocio, no como un fin en sí mismo.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICIOS
+  ============================================================ -->
+  <section class="servicios" id="servicios" aria-labelledby="svc-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="svc.label">Qué hacemos</span>
+        <h2 class="section-title" id="svc-title" data-i18n="svc.title">Soluciones digitales para cada necesidad</h2>
+        <p class="section-desc" data-i18n="svc.desc">Desde una web profesional hasta sistemas de automatización o inteligencia artificial. Adaptamos cada solución a lo que tu negocio realmente necesita.</p>
+      </div>
+
+      <div class="servicios-grid">
+
+        <div class="servicio-card reveal">
+          <span class="servicio-num">01</span>
+          <div class="servicio-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3 class="servicio-title" data-i18n="svc1.title">Diseño y desarrollo web</h3>
+          <p class="servicio-text" data-i18n="svc1.text">Tu negocio merece una web que trabaje por ti. Diseñamos y desarrollamos sitios rápidos, profesionales y pensados para convertir visitantes en clientes reales.</p>
+        </div>
+
+        <div class="servicio-card reveal">
+          <span class="servicio-num">02</span>
+          <div class="servicio-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+          </div>
+          <h3 class="servicio-title" data-i18n="svc2.title">Diseño digital</h3>
+          <p class="servicio-text" data-i18n="svc2.text">Una identidad visual débil hace perder credibilidad antes de que el cliente lea una sola palabra. Creamos diseños que comunican quién eres y por qué merece la pena confiar en ti.</p>
+        </div>
+
+        <div class="servicio-card reveal">
+          <span class="servicio-num">03</span>
+          <div class="servicio-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          </div>
+          <h3 class="servicio-title" data-i18n="svc3.title">Automatización</h3>
+          <p class="servicio-text" data-i18n="svc3.text">Si tu equipo repite las mismas tareas cada día, estás perdiendo tiempo y dinero. Identificamos esos procesos y los automatizamos para que tu negocio funcione con menos esfuerzo manual.</p>
+        </div>
+
+        <div class="servicio-card reveal">
+          <span class="servicio-num">04</span>
+          <div class="servicio-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3 class="servicio-title" data-i18n="svc4.title">Inteligencia artificial</h3>
+          <p class="servicio-text" data-i18n="svc4.text">La inteligencia artificial no es solo para grandes empresas. Diseñamos asistentes y herramientas adaptadas a tu negocio: atención al cliente, filtrado de consultas, análisis de datos.</p>
+        </div>
+
+        <div class="servicio-card reveal">
+          <span class="servicio-num">05</span>
+          <div class="servicio-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <h3 class="servicio-title" data-i18n="svc5.title">Soluciones para empresas</h3>
+          <p class="servicio-text" data-i18n="svc5.text">Algunos problemas no tienen una solución estándar. Analizamos tu operativa, detectamos el cuello de botella y construimos un sistema digital a medida que lo resuelve de raíz.</p>
+        </div>
+
+        <div class="servicio-card reveal">
+          <span class="servicio-num">06</span>
+          <div class="servicio-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3 class="servicio-title" data-i18n="svc6.title">Software</h3>
+          <p class="servicio-text" data-i18n="svc6.text">Cuando ninguna herramienta existente se ajusta a lo que necesitas, desarrollamos la tuya. Aplicaciones digitales construidas desde cero, escalables y pensadas para durar.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROCESO
+  ============================================================ -->
+  <section class="proceso" id="proceso" aria-labelledby="proc-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="proc.label">Cómo trabajamos</span>
+        <h2 class="section-title" id="proc-title" data-i18n="proc.title">Un proceso claro, de principio a fin</h2>
+        <p class="section-desc" data-i18n="proc.desc">Trabajamos con transparencia. Sabrás en todo momento en qué fase estamos y qué viene después.</p>
+      </div>
+
+      <div class="proceso-grid">
+
+        <div class="proceso-step reveal">
+          <div class="proceso-step-num" aria-hidden="true">01</div>
+          <h3 class="proceso-step-title" data-i18n="proc.s1.title">Descubrimos</h3>
+          <p class="proceso-step-text" data-i18n="proc.s1.text">Entendemos el negocio, escuchamos el problema y detectamos la necesidad real antes de proponer nada.</p>
+        </div>
+
+        <div class="proceso-step reveal">
+          <div class="proceso-step-num" aria-hidden="true">02</div>
+          <h3 class="proceso-step-title" data-i18n="proc.s2.title">Diseñamos</h3>
+          <p class="proceso-step-text" data-i18n="proc.s2.text">Creamos una solución adaptada. Sin plantillas. Con criterio y claridad sobre por qué cada decisión tiene sentido.</p>
+        </div>
+
+        <div class="proceso-step reveal">
+          <div class="proceso-step-num" aria-hidden="true">03</div>
+          <h3 class="proceso-step-title" data-i18n="proc.s3.title">Construimos</h3>
+          <p class="proceso-step-text" data-i18n="proc.s3.text">Desarrollamos y configuramos la solución con código limpio, estructura clara y rendimiento como prioridad.</p>
+        </div>
+
+        <div class="proceso-step reveal">
+          <div class="proceso-step-num" aria-hidden="true">04</div>
+          <h3 class="proceso-step-title" data-i18n="proc.s4.title">Probamos</h3>
+          <p class="proceso-step-text" data-i18n="proc.s4.text">Comprobamos rendimiento, seguridad, compatibilidad con dispositivos y funcionamiento. No publicamos nada que no funcione correctamente.</p>
+        </div>
+
+        <div class="proceso-step reveal">
+          <div class="proceso-step-num" aria-hidden="true">05</div>
+          <h3 class="proceso-step-title" data-i18n="proc.s5.title">Lanzamos</h3>
+          <p class="proceso-step-text" data-i18n="proc.s5.text">Publicamos, configuramos y dejamos todo preparado para que puedas operar con confianza desde el primer día.</p>
+        </div>
+
+        <div class="proceso-step reveal">
+          <div class="proceso-step-num" aria-hidden="true">06</div>
+          <h3 class="proceso-step-title" data-i18n="proc.s6.title">Evolucionamos</h3>
+          <p class="proceso-step-text" data-i18n="proc.s6.text">Seguimos mejorando la solución cuando el negocio crece. Porque una buena web nunca está del todo terminada.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PORTFOLIO
+  ============================================================ -->
+  <section class="portfolio" id="proyectos" aria-labelledby="port-title">
+    <div class="container">
+      <div class="section-header reveal"><span class="section-label" data-i18n="port.label">Portfolio</span><h2 class="section-title" id="port-title" data-i18n="port.title">Proyectos que muestran lo que podemos hacer.</h2><p class="section-desc" data-i18n="port.desc">Una selección de trabajos y conceptos para enseñar cómo combinamos diseño, captación y automatización.</p></div>
+      <div class="portfolio-showcase">
+        
+        <div class="portfolio-side-grid">
+          <article class="portfolio-mini reveal"><div class="portfolio-mini-visual realestate"><span>CASA NORTE</span></div><div class="portfolio-mini-body"><div class="project-cat" data-i18n="port.demo1.cat">Proyecto conceptual · Inmobiliaria</div><h3 data-i18n="port.demo1.name">Casa Norte</h3><p data-i18n="port.demo1.desc">Presentación de propiedades y captación de solicitudes.</p><div class="project-tags"><span class="project-tag">Web</span><span class="project-tag">Leads</span></div></div></article>
+          <article class="portfolio-mini reveal"><div class="portfolio-mini-visual restaurant"><span>BRASA</span></div><div class="portfolio-mini-body"><div class="project-cat" data-i18n="port.demo2.cat">Proyecto conceptual · Restaurante</div><h3 data-i18n="port.demo2.name">Brasa</h3><p data-i18n="port.demo2.desc">Experiencia digital para reservas y consultas.</p><div class="project-tags"><span class="project-tag">Web</span><span class="project-tag">Reservas</span></div></div></article>
+        </div>
+      </div>
+      <div class="portfolio-automation reveal"><div><span class="section-label" data-i18n="port.auto.label">Más que una web</span><h3 data-i18n="port.auto.title">Tu web también puede trabajar por ti.</h3><p data-i18n="port.auto.desc">Diseñamos el proceso que ocurre después de que alguien pulsa “contactar”: recibes el lead, se organiza la información y el cliente recibe una respuesta automática.</p></div><div class="portfolio-flow"><div><b>01</b><span data-i18n="port.auto.step1">Cliente</span><small data-i18n="port.auto.step1s">Rellena el formulario</small></div><div class="flow-arrow">→</div><div><b>02</b><span data-i18n="port.auto.step2">Automatización</span><small data-i18n="port.auto.step2s">Organiza la solicitud</small></div><div class="flow-arrow">→</div><div><b>03</b><span data-i18n="port.auto.step3">Tú recibes el lead</span><small data-i18n="port.auto.step3s">Listo para responder</small></div></div></div>
+      <div class="portfolio-next reveal"><span data-i18n="port.next.title">Tu próximo proyecto puede estar aquí.</span><a href="#contacto"><span data-i18n="port.next.cta">Solicitar propuesta</span> →</a></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CASOS DE USO
+  ============================================================ -->
+  <section class="casos" id="casos" aria-labelledby="casos-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="casos.label">Ejemplos de soluciones</span>
+        <h2 class="section-title" id="casos-title" data-i18n="casos.title">¿Cómo puede ayudarte YUNAHM?</h2>
+        <p class="section-desc" data-i18n="casos.desc">Estos son ejemplos de lo que podemos construir juntos. Cada negocio tiene una historia diferente.</p>
+      </div>
+
+      <div class="casos-grid">
+
+        <div class="caso-card reveal">
+          <div class="caso-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <h3 class="caso-title" data-i18n="caso1.title">"Una web que trabaja por ti"</h3>
+          <p class="caso-desc" data-i18n="caso1.desc">Tu web conectada con un formulario inteligente, tu WhatsApp y un sistema de captación automática. Mientras duermes, tu web sigue captando clientes.</p>
+          <span class="caso-note" data-i18n="caso1.note">Ejemplo conceptual · Diseñado para cada negocio</span>
+        </div>
+
+        <div class="caso-card reveal">
+          <div class="caso-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          </div>
+          <h3 class="caso-title" data-i18n="caso2.title">"Menos tareas repetitivas"</h3>
+          <p class="caso-desc" data-i18n="caso2.desc">Identificamos los procesos que te roban tiempo, los automatizamos y te devolvemos horas de trabajo cada semana. Menos tareas manuales, más tiempo para lo que importa.</p>
+          <span class="caso-note" data-i18n="caso2.note">Ejemplo conceptual · Adaptado a tu operativa</span>
+        </div>
+
+        <div class="caso-card reveal">
+          <div class="caso-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3 class="caso-title" data-i18n="caso3.title">"Atención más rápida"</h3>
+          <p class="caso-desc" data-i18n="caso3.desc">Un asistente digital que responde preguntas frecuentes, agenda citas o filtra consultas automáticamente. Tu negocio disponible las 24 horas.</p>
+          <span class="caso-note" data-i18n="caso3.note">Ejemplo conceptual · Configurable para tu sector</span>
+        </div>
+
+        <div class="caso-card reveal">
+          <div class="caso-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3 class="caso-title" data-i18n="caso4.title">"De problema a software"</h3>
+          <p class="caso-desc" data-i18n="caso4.desc">Tienes un problema específico que ninguna herramienta existente resuelve bien. Construimos la solución desde cero, exactamente como la necesitas.</p>
+          <span class="caso-note" data-i18n="caso4.note">Ejemplo conceptual · Cada solución es única</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EVOLUCIÓN
+  ============================================================ -->
+  <section class="evolucion" id="evolucion" aria-labelledby="evol-title">
+    <div class="container">
+      <span class="section-label" style="display:block;text-align:center;margin-bottom:var(--sp-4)" data-i18n="evol.label">Visión</span>
+      <h2 class="evolucion-title reveal" id="evol-title">
+<span data-i18n="evol.title">Hoy construimos webs y soluciones digitales. Mañana construimos sistemas cada vez más</span> <em data-i18n="evol.title.em">inteligentes.</em>
+      </h2>
+      <p class="evolucion-subtitle reveal">
+<span data-i18n="evol.desc">Esta es la dirección en la que crece YUNAHM. No prometemos lo que no existe todavía — pero sí sabemos hacia dónde vamos.</span>
+      </p>
+
+      <div class="evolucion-track reveal" aria-label="Hoja de ruta de YUNAHM" role="list">
+
+        <div class="evolucion-step current" role="listitem">
+          <div class="evolucion-step-box" data-i18n="evol.step1">Web</div>
+          <span class="evolucion-step-label" data-i18n="evol.now">Ahora</span>
+        </div>
+        <div class="evolucion-arrow" aria-hidden="true">→</div>
+        <div class="evolucion-step" role="listitem">
+          <div class="evolucion-step-box" data-i18n="evol.step2">Automatización</div>
+          <span class="evolucion-step-label" data-i18n="evol.growing">Creciendo</span>
+        </div>
+        <div class="evolucion-arrow" aria-hidden="true">→</div>
+        <div class="evolucion-step" role="listitem">
+          <div class="evolucion-step-box" data-i18n="evol.step3">Inteligencia artificial</div>
+          <span class="evolucion-step-label" data-i18n="evol.soon">Próximamente</span>
+        </div>
+        <div class="evolucion-arrow" aria-hidden="true">→</div>
+        <div class="evolucion-step" role="listitem">
+          <div class="evolucion-step-box" data-i18n="evol.step4">Software</div>
+          <span class="evolucion-step-label" data-i18n="evol.vision">Visión</span>
+        </div>
+        <div class="evolucion-arrow" aria-hidden="true">→</div>
+        <div class="evolucion-step" role="listitem">
+          <div class="evolucion-step-box" data-i18n="evol.step5">Suscripción</div>
+          <span class="evolucion-step-label" data-i18n="evol.future">Futuro</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SOBRE YUNAHM
+  ============================================================ -->
+  <section class="sobre" id="sobre" aria-labelledby="sobre-title">
+    <div class="container">
+      <div class="sobre-inner">
+
+        <div class="sobre-left reveal">
+          <span class="section-label" data-i18n="sobre.label">Sobre YUNAHM</span>
+          <h2 class="sobre-title" id="sobre-title">
+<span data-i18n="sobre.title.line1">Una empresa digital</span><br><span data-i18n="sobre.title.line2">construida con <em>criterio.</em></span>
+          </h2>
+
+          <p class="sobre-text">
+<span data-i18n="sobre.p1">YUNAHM nace de la convicción de que la tecnología debe resolver problemas reales, no añadir complejidad innecesaria. Trabajamos con negocios que quieren crecer, digitalizarse y operar de manera más inteligente.</span>
+          </p>
+
+          <p class="sobre-text">
+<span data-i18n="sobre.p2">Cada proyecto empieza por escuchar. Entendemos el negocio antes de proponer cualquier solución. Somos meticulosos con los detalles, honestos sobre lo que podemos hacer y apasionados por el trabajo bien hecho.</span>
+          </p>
+
+          <p class="sobre-text">
+<span data-i18n="sobre.p3">Aprendemos continuamente y aplicamos ese aprendizaje en cada proyecto. No prometemos lo que no sabemos cumplir.</span>
+          </p>
+        </div>
+
+        <div class="sobre-right reveal">
+          <div class="sobre-valores" aria-label="Valores de YUNAHM">
+
+            <div class="sobre-valor">
+              <span class="sobre-valor-num" aria-hidden="true">—</span>
+              <div class="sobre-valor-content">
+                <div class="sobre-valor-title" data-i18n="sobre.v1.title">Honestidad antes que marketing</div>
+                <div class="sobre-valor-text" data-i18n="sobre.v1.text">No inventamos resultados ni prometemos lo que no sabemos cumplir. La confianza se construye siendo transparentes.</div>
+              </div>
+            </div>
+
+            <div class="sobre-valor">
+              <span class="sobre-valor-num" aria-hidden="true">—</span>
+              <div class="sobre-valor-content">
+                <div class="sobre-valor-title" data-i18n="sobre.v2.title">Tecnología como herramienta</div>
+                <div class="sobre-valor-text" data-i18n="sobre.v2.text">La tecnología no es el objetivo. Es el medio para que tu negocio funcione mejor y tú tengas más tiempo.</div>
+              </div>
+            </div>
+
+            <div class="sobre-valor">
+              <span class="sobre-valor-num" aria-hidden="true">—</span>
+              <div class="sobre-valor-content">
+                <div class="sobre-valor-title" data-i18n="sobre.v3.title">Aprendizaje continuo</div>
+                <div class="sobre-valor-text" data-i18n="sobre.v3.text">El mundo digital cambia rápido. Nos mantenemos actualizados para ofrecerte siempre la solución más adecuada.</div>
+              </div>
+            </div>
+
+            <div class="sobre-valor">
+              <span class="sobre-valor-num" aria-hidden="true">—</span>
+              <div class="sobre-valor-content">
+                <div class="sobre-valor-title" data-i18n="sobre.v4.title">Orientación internacional</div>
+                <div class="sobre-valor-text" data-i18n="sobre.v4.text">Trabajamos con clientes de cualquier lugar. La distancia no es un obstáculo cuando el trabajo está bien organizado.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACTO
+  ============================================================ -->
+  <section class="contacto" id="contacto" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="contacto-inner">
+
+        <div class="contacto-left reveal">
+          <span class="section-label" data-i18n="contact.label">Contacto</span>
+          <h2 class="contacto-title" id="contact-title">
+<span data-i18n="contact.title">¿Tienes una idea o un problema que quieres <em>resolver?</em></span>
+          </h2>
+          <p class="contacto-desc">
+<span data-i18n="contact.desc">Cuéntanos qué necesitas y estudiaremos contigo la mejor forma de convertirlo en una solución digital.</span>
+          </p>
+          <div class="contacto-data">
+            <div class="contacto-item contacto-email-box">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:hola@yunahm.com">hola@yunahm.com</a>
+            </div>
+<a href="https://wa.me/34674958795?text=Hola%2C%20he%20visto%20YUNAHM%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto."
+         class="whatsapp-cta"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Contactar con YUNAHM por WhatsApp">
+        Contactar por WhatsApp
+      </a>
+          </div>
+        </div>
+
+        <div class="contacto-right reveal">
+          <!-- Netlify Forms activo: sube a Netlify y los envíos llegan directamente a tu panel.
+               Opcional: añade action="/gracias" para redirigir tras el envío. -->
+          <form class="form" id="contactForm" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="_honeypot" novalidate aria-label="Formulario de contacto">
+            <input type="hidden" name="form-name" value="contact" />
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="nombre" data-i18n="form.nombre.label">Nombre *</label>
+                <input class="form-input" type="text" id="nombre" name="nombre" autocomplete="given-name" required aria-required="true" placeholder="Tu nombre" data-i18n-placeholder="form.nombre.ph" />
+                <span class="form-error-msg" id="nombre-err" role="alert" data-i18n="form.nombre.err">Por favor, introduce tu nombre.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="empresa" data-i18n="form.empresa.label">Empresa</label>
+                <input class="form-input" type="text" id="empresa" name="empresa" autocomplete="organization" placeholder="Nombre de tu empresa" data-i18n-placeholder="form.empresa.ph" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="email" data-i18n="form.email.label">Email *</label>
+                <input class="form-input" type="email" id="email" name="email" autocomplete="email" required aria-required="true" placeholder="tu@email.com" />
+                <span class="form-error-msg" id="email-err" role="alert" data-i18n="form.email.err">Por favor, introduce un email válido.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="pais" data-i18n="form.pais.label">País</label>
+                <input class="form-input" type="text" id="pais" name="pais" autocomplete="country-name" placeholder="Tu país" data-i18n-placeholder="form.pais.ph" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="tipo" data-i18n="form.tipo.label">Tipo de proyecto</label>
+              <div class="form-select-wrap">
+                <select class="form-select" id="tipo" name="tipo" data-i18n-aria="form.tipo.label" aria-label="Tipo de proyecto">
+                  <option value="" disabled selected data-i18n="form.tipo.ph">Selecciona una opción</option>
+                  <option value="web" data-i18n="svc1.title">Diseño y desarrollo web</option>
+                  <option value="design" data-i18n="svc2.title">Diseño digital</option>
+                  <option value="automation" data-i18n="svc3.title">Automatización</option>
+                  <option value="ai" data-i18n="svc4.title">Inteligencia artificial</option>
+                  <option value="business" data-i18n="svc5.title">Soluciones para empresas</option>
+                  <option value="software" data-i18n="svc6.title">Software</option>
+                  <option value="otro" data-i18n="form.tipo.otro">Otro / Todavía no lo sé</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="objetivo" data-i18n="form.objetivo.label">¿Qué quieres conseguir?</label>
+                <input class="form-input" type="text" id="objetivo" name="objetivo" placeholder="Ej.: captar más clientes, automatizar un proceso..." data-i18n-placeholder="form.objetivo.ph" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="plazo" data-i18n="form.plazo.label">¿Cuándo te gustaría tenerlo?</label>
+                <div class="form-select-wrap">
+                  <select class="form-select" id="plazo" name="plazo" data-i18n-aria="form.plazo.label" aria-label="¿Cuándo te gustaría tenerlo?">
+                    <option value="" disabled selected data-i18n="form.plazo.ph">Selecciona una opción</option>
+                    <option value="urgente" data-i18n="form.plazo.urgente">Lo antes posible</option>
+                    <option value="1-3m" data-i18n="form.plazo.1-3m">En 1–3 meses</option>
+                    <option value="3-6m" data-i18n="form.plazo.3-6m">En 3–6 meses</option>
+                    <option value="flexible" data-i18n="form.plazo.flexible">Sin fecha concreta</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="mensaje" data-i18n="form.msg.label">Cuéntanos tu proyecto *</label>
+              <textarea class="form-textarea" id="mensaje" name="mensaje" required aria-required="true" placeholder="Describe brevemente qué necesitas, qué problema quieres resolver o cuál es tu idea..." data-i18n-placeholder="form.msg.ph" rows="5"></textarea>
+              <span class="form-error-msg" id="mensaje-err" role="alert" data-i18n="form.msg.err">Por favor, cuéntanos algo sobre tu proyecto.</span>
+            </div>
+
+            <!-- Anti-spam honeypot (oculto) -->
+            <input type="text" name="_honeypot" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+            <button type="submit" class="form-submit" id="formSubmit">
+              <span id="submitText" data-i18n="form.submit">Quiero hablar de mi proyecto</span>
+              <svg id="submitIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+
+            <p class="form-note" data-i18n="form.privacy">Tu información es confidencial y no será compartida con terceros.</p>
+
+            <div class="form-status" id="formStatus" role="alert" aria-live="polite"></div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+</section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">YUNA<span>H</span>M</div>
+        <p class="footer-copy" data-i18n="footer.copy">© 2026 YUNAHM. Todos los derechos reservados.</p>
+        <nav class="footer-links" aria-label="Enlaces legales">
+          <a href="#" data-i18n-aria="footer.privacy.aria" data-i18n="footer.privacy" aria-label="Política de privacidad (próximamente)">Privacidad</a>
+          <a href="#" data-i18n-aria="footer.legal.aria" data-i18n="footer.legal" aria-label="Aviso legal (próximamente)">Aviso legal</a>
+          <a href="#" data-i18n-aria="footer.cookies.aria" data-i18n="footer.cookies" aria-label="Cookies (próximamente)">Cookies</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-top" id="backTop" aria-label="Volver al inicio">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script>
+    'use strict';
+
+    /* ================================================================
+       SISTEMA DE TRADUCCIONES YUNAHM
+       Arquitectura: data-i18n en HTML + objeto translations + applyLang()
+    ================================================================ */
+    const translations = {
+
+      es: {
+        'meta.title':        'YUNAHM — Soluciones digitales para negocios modernos',
+        'meta.desc':         'YUNAHM diseña experiencias digitales, automatiza procesos y crea soluciones tecnológicas para negocios modernos. Diseño web, diseño digital, automatización e inteligencia artificial.',
+        'meta.og.title':     'YUNAHM — Soluciones digitales para negocios modernos',
+        'meta.og.desc':      'Detectamos necesidades, diseñamos soluciones y utilizamos tecnología para ayudar a los negocios a trabajar mejor, ahorrar tiempo y crecer.',
+        'nav.services':      'Servicios',
+        'nav.process':       'Proceso',
+        'nav.projects':      'Proyectos',
+        'nav.about':         'Sobre YUNAHM',
+        'nav.contact':       'Contacto',
+        'nav.cta':           'Empezar un proyecto',
+        'hero.eyebrow':      'Soluciones digitales para negocios modernos',
+        'hero.title':        'Diseñamos el<br>futuro <em>digital</em><br>de tu negocio.',
+        'hero.tagline':      'Web · Diseño · Automatización · IA · Software',
+        'hero.desc':         'No hacemos solo páginas web. Detectamos lo que frena tu negocio, diseñamos la solución y la construimos con tecnología. Sin plantillas. Sin atajos.',
+        'hero.btn2':         'Ver proyectos',
+        'hero.card.label':   'Enfoque',
+        'hero.card.value':   'Cada negocio es diferente.<br><span style="color:var(--c-dark)">Cada solución también.</span>',
+        'hero.scroll':       'Desplaza',
+        'dif.label':         'Nuestra filosofía',
+        'dif.title.line1':   'No hacemos solo',
+        'dif.title.line2':   'páginas web.',
+        'dif.text':          'Cada negocio tiene necesidades diferentes. Analizamos lo que necesitas, diseñamos la solución y utilizamos tecnología para convertirla en algo real.',
+        'dif.btn':           'Explorar servicios',
+        'dif.p1.title':      'Descubrimos el problema real',
+        'dif.p1.text':       'Antes de proponer cualquier solución, entendemos cómo funciona tu negocio y qué frena su crecimiento.',
+        'dif.p2.title':      'Diseñamos sin plantillas genéricas',
+        'dif.p2.text':       'Cada proyecto tiene una identidad propia. No aplicamos la misma solución a todos los clientes.',
+        'dif.p3.title':      'Tecnología que trabaja para ti',
+        'dif.p3.text':       'Automatización, inteligencia artificial y software como herramientas al servicio de tu negocio, no como un fin en sí mismo.',
+        'svc.label':         'Qué hacemos',
+        'svc.title':         'Soluciones digitales para cada necesidad',
+        'svc.desc':          'Desde una web profesional hasta sistemas de automatización o inteligencia artificial. Adaptamos cada solución a lo que tu negocio realmente necesita.',
+        'svc1.title':        'Diseño y desarrollo web',
+        'svc1.text':         'Tu negocio merece una web que trabaje por ti. Diseñamos y desarrollamos sitios rápidos, profesionales y pensados para convertir visitantes en clientes reales.',
+        'svc2.title':        'Diseño digital',
+        'svc2.text':         'Una identidad visual débil hace perder credibilidad antes de que el cliente lea una sola palabra. Creamos diseños que comunican quién eres y por qué merece la pena confiar en ti.',
+        'svc3.title':        'Automatización',
+        'svc3.text':         'Si tu equipo repite las mismas tareas cada día, estás perdiendo tiempo y dinero. Identificamos esos procesos y los automatizamos para que tu negocio funcione con menos esfuerzo manual.',
+        'svc4.title':        'Inteligencia artificial',
+        'svc4.text':         'La inteligencia artificial no es solo para grandes empresas. Diseñamos asistentes y herramientas adaptadas a tu negocio: atención al cliente, filtrado de consultas, análisis de datos.',
+        'svc5.title':        'Soluciones para empresas',
+        'svc5.text':         'Algunos problemas no tienen una solución estándar. Analizamos tu operativa, detectamos el cuello de botella y construimos un sistema digital a medida que lo resuelve de raíz.',
+        'svc6.title':        'Software',
+        'svc6.text':         'Cuando ninguna herramienta existente se ajusta a lo que necesitas, desarrollamos la tuya. Aplicaciones digitales construidas desde cero, escalables y pensadas para durar.',
+        'proc.label':        'Cómo trabajamos',
+        'proc.title':        'Un proceso claro, de principio a fin',
+        'proc.desc':         'Trabajamos con transparencia. Sabrás en todo momento en qué fase estamos y qué viene después.',
+        'proc.s1.title':     'Descubrimos',
+        'proc.s1.text':      'Entendemos el negocio, escuchamos el problema y detectamos la necesidad real antes de proponer nada.',
+        'proc.s2.title':     'Diseñamos',
+        'proc.s2.text':      'Creamos una solución adaptada. Sin plantillas. Con criterio y claridad sobre por qué cada decisión tiene sentido.',
+        'proc.s3.title':     'Construimos',
+        'proc.s3.text':      'Desarrollamos y configuramos la solución con código limpio, estructura clara y rendimiento como prioridad.',
+        'proc.s4.title':     'Probamos',
+        'proc.s4.text':      'Comprobamos rendimiento, seguridad, compatibilidad con dispositivos y funcionamiento. No publicamos nada que no funcione correctamente.',
+        'proc.s5.title':     'Lanzamos',
+        'proc.s5.text':      'Publicamos, configuramos y dejamos todo preparado para que puedas operar con confianza desde el primer día.',
+        'proc.s6.title':     'Evolucionamos',
+        'proc.s6.text':      'Seguimos mejorando la solución cuando el negocio crece. Porque una buena web nunca está del todo terminada.',
+        'port.label':        'Portfolio',
+        'port.title':        'Proyectos que muestran lo que podemos hacer.',
+        'port.desc':         'Una selección de trabajos y conceptos para enseñar cómo combinamos diseño, captación y automatización.',
+        'port.auto.label': 'Más que una web',
+        'port.auto.title': 'Tu web también puede trabajar por ti.',
+        'port.auto.desc': 'Diseñamos el proceso que ocurre después de que alguien pulsa “contactar”: recibes el lead, se organiza la información y el cliente recibe una respuesta automática.',
+        'port.auto.step1': 'Cliente',
+        'port.auto.step1s': 'Rellena el formulario',
+        'port.auto.step2': 'Automatización',
+        'port.auto.step2s': 'Organiza la solicitud',
+        'port.auto.step3': 'Tú recibes el lead',
+        'port.auto.step3s': 'Listo para responder',
+        'port.demo1.cat': 'Proyecto conceptual · Inmobiliaria',
+        'port.demo1.name': 'Casa Norte',
+        'port.demo1.desc': 'Presentación de propiedades y captación de solicitudes.',
+        'port.demo2.cat': 'Proyecto conceptual · Restaurante',
+        'port.demo2.name': 'Brasa',
+        'port.demo2.desc': 'Experiencia digital para reservas y consultas.',
+        'port.ali.badge':    'Completado',
+        'port.ali.cat':      'Web corporativa · Empresa de servicios',
+        'port.ali.name':     'ALI — Montaje de cocinas',
+        'port.ali.desc':     'Web corporativa profesional para empresa especializada en instalación y montaje de cocinas. Sitio multilingüe con arquitectura i18n en 3 idiomas, SEO optimizado y sistema de captación de clientes.',
+        'port.ali.tags.aria':'Tecnologías utilizadas',
+        'port.ali.link':     'URL próximamente',
+        'port.ali.link.aria':'URL del proyecto disponible próximamente',
+        'port.next.title':   'Tu próximo proyecto',
+        'port.next.cta':     'Empieza una conversación',
+        'casos.label':       'Ejemplos de soluciones',
+        'casos.title':       '¿Cómo puede ayudarte YUNAHM?',
+        'casos.desc':        'Estos son ejemplos de lo que podemos construir juntos. Cada negocio tiene una historia diferente.',
+        'caso1.title':       '"Una web que trabaja por ti"',
+        'caso1.desc':        'Tu web conectada con un formulario inteligente, tu WhatsApp y un sistema de captación automática. Mientras duermes, tu web sigue captando clientes.',
+        'caso1.note':        'Ejemplo conceptual · Diseñado para cada negocio',
+        'caso2.title':       '"Menos tareas repetitivas"',
+        'caso2.desc':        'Identificamos los procesos que te roban tiempo, los automatizamos y te devolvemos horas de trabajo cada semana. Menos tareas manuales, más tiempo para lo que importa.',
+        'caso2.note':        'Ejemplo conceptual · Adaptado a tu operativa',
+        'caso3.title':       '"Atención más rápida"',
+        'caso3.desc':        'Un asistente digital que responde preguntas frecuentes, agenda citas o filtra consultas automáticamente. Tu negocio disponible las 24 horas.',
+        'caso3.note':        'Ejemplo conceptual · Configurable para tu sector',
+        'caso4.title':       '"De problema a software"',
+        'caso4.desc':        'Tienes un problema específico que ninguna herramienta existente resuelve bien. Construimos la solución desde cero, exactamente como la necesitas.',
+        'caso4.note':        'Ejemplo conceptual · Cada solución es única',
+        'evol.label':        'Visión',
+        'evol.title':        'Hoy construimos webs y soluciones digitales. Mañana construimos sistemas cada vez más',
+        'evol.title.em':     'inteligentes.',
+        'evol.desc':         'Esta es la dirección en la que crece YUNAHM. No prometemos lo que no existe todavía — pero sí sabemos hacia dónde vamos.',
+        'evol.step1':        'Web',
+        'evol.now':          'Ahora',
+        'evol.step2':        'Automatización',
+        'evol.growing':      'Creciendo',
+        'evol.step3':        'Inteligencia artificial',
+        'evol.soon':         'Próximamente',
+        'evol.step4':        'Software',
+        'evol.vision':       'Visión',
+        'evol.step5':        'Suscripción',
+        'evol.future':       'Futuro',
+        'sobre.label':       'Sobre YUNAHM',
+        'sobre.title.line1': 'Una empresa digital',
+        'sobre.title.line2': 'construida con <em>criterio.</em>',
+        'sobre.p1':          'YUNAHM nace de la convicción de que la tecnología debe resolver problemas reales, no añadir complejidad innecesaria. Trabajamos con negocios que quieren crecer, digitalizarse y operar de manera más inteligente.',
+        'sobre.p2':          'Cada proyecto empieza por escuchar. Entendemos el negocio antes de proponer cualquier solución. Somos meticulosos con los detalles, honestos sobre lo que podemos hacer y apasionados por el trabajo bien hecho.',
+        'sobre.p3':          'Aprendemos continuamente y aplicamos ese aprendizaje en cada proyecto. No prometemos lo que no sabemos cumplir.',
+        'sobre.v1.title':    'Honestidad antes que marketing',
+        'sobre.v1.text':     'No inventamos resultados ni prometemos lo que no sabemos cumplir. La confianza se construye siendo transparentes.',
+        'sobre.v2.title':    'Tecnología como herramienta',
+        'sobre.v2.text':     'La tecnología no es el objetivo. Es el medio para que tu negocio funcione mejor y tú tengas más tiempo.',
+        'sobre.v3.title':    'Aprendizaje continuo',
+        'sobre.v3.text':     'El mundo digital cambia rápido. Nos mantenemos actualizados para ofrecerte siempre la solución más adecuada.',
+        'sobre.v4.title':    'Orientación internacional',
+        'sobre.v4.text':     'Trabajamos con clientes de cualquier lugar. La distancia no es un obstáculo cuando el trabajo está bien organizado.',
+        'contact.label':     'Contacto',
+        'contact.title':     '¿Tienes una idea o un problema que quieres <em>resolver?</em>',
+        'contact.desc':      'Cuéntanos qué necesitas, qué quieres conseguir y estudiaremos el alcance del proyecto. Después te enviaremos una propuesta personalizada.',
+        'contact.whatsapp':  'WhatsApp — próximamente',
+        'form.nombre.label': 'Nombre *',
+        'form.nombre.ph':    'Tu nombre',
+        'form.nombre.err':   'Por favor, introduce tu nombre.',
+        'form.empresa.label':'Empresa',
+        'form.empresa.ph':   'Nombre de tu empresa',
+        'form.email.label':  'Email *',
+        'form.email.err':    'Por favor, introduce un email válido.',
+        'form.pais.label':   'País',
+        'form.pais.ph':      'Tu país',
+        'form.tipo.label':   'Tipo de proyecto',
+        'form.tipo.ph':      'Selecciona una opción',
+        'form.tipo.otro':    'Otro / Todavía no lo sé',
+        'form.objetivo.label': '¿Qué quieres conseguir?',
+        'form.objetivo.ph':    'Ej.: captar más clientes, automatizar un proceso...',
+        'form.plazo.label':    '¿Cuándo te gustaría tenerlo?',
+        'form.plazo.ph':       'Selecciona una opción',
+        'form.plazo.urgente':  'Lo antes posible',
+        'form.plazo.1-3m':    'En 1–3 meses',
+        'form.plazo.3-6m':    'En 3–6 meses',
+        'form.plazo.flexible':'Sin fecha concreta',
+        'form.msg.label':    'Cuéntanos tu proyecto *',
+        'form.msg.ph':       'Describe brevemente qué necesitas, qué problema quieres resolver o cuál es tu idea...',
+        'form.msg.err':      'Por favor, cuéntanos algo sobre tu proyecto.',
+        'form.submit':       'Solicitar propuesta personalizada',
+        'form.sending':      'Enviando...',
+        'form.privacy':      'No necesitas indicar un presupuesto. Analizaremos el alcance y te enviaremos una propuesta personalizada.',
+        'footer.copy':       '© 2026 YUNAHM. Todos los derechos reservados.',
+        'footer.privacy':    'Privacidad',
+        'footer.privacy.aria':'Política de privacidad (próximamente)',
+        'footer.legal':      'Aviso legal',
+        'footer.legal.aria': 'Aviso legal (próximamente)',
+        'footer.cookies':    'Cookies',
+        'footer.cookies.aria':'Cookies (próximamente)',
+        'back.top':          'Volver al inicio',
+        'hero.aria':         'Portada',
+      },
+
+      en: {
+        'meta.title':        'YUNAHM — Digital solutions for modern businesses',
+        'meta.desc':         'YUNAHM designs digital experiences, automates processes and builds technology solutions for modern businesses. Web design, digital design, automation and artificial intelligence.',
+        'meta.og.title':     'YUNAHM — Digital solutions for modern businesses',
+        'meta.og.desc':      'We identify needs, design solutions and use technology to help businesses work better, save time and grow.',
+        'nav.services':      'Services',
+        'nav.process':       'Process',
+        'nav.projects':      'Projects',
+        'nav.about':         'About YUNAHM',
+        'nav.contact':       'Contact',
+        'nav.cta':           'Start a project',
+        'hero.eyebrow':      'Digital solutions for modern businesses',
+        'hero.title':        'We shape the<br><em>digital future</em><br>of your business.',
+        'hero.tagline':      'Web · Design · Automation · AI · Software',
+        'hero.desc':         'We do more than build websites. We identify what is holding your business back, design the right solution and build it with technology. No templates. No shortcuts.',
+        'hero.btn2':         'View projects',
+        'hero.card.label':   'Approach',
+        'hero.card.value':   'Every business is different.<br><span style="color:var(--c-dark)">Every solution is too.</span>',
+        'hero.scroll':       'Scroll',
+        'dif.label':         'Our philosophy',
+        'dif.title.line1':   'We do more than',
+        'dif.title.line2':   'build websites.',
+        'dif.text':          'Every business has different needs. We analyse what you need, design the solution and use technology to make it real.',
+        'dif.btn':           'Explore services',
+        'dif.p1.title':      'We uncover the real problem',
+        'dif.p1.text':       'Before proposing anything, we take time to understand how your business works and what is holding it back.',
+        'dif.p2.title':      'We design without generic templates',
+        'dif.p2.text':       'Every project has its own identity. We never apply the same solution to every client.',
+        'dif.p3.title':      'Technology that works for you',
+        'dif.p3.text':       'Automation, artificial intelligence and software as tools in service of your business — never as an end in themselves.',
+        'svc.label':         'What we do',
+        'svc.title':         'Digital solutions for every need',
+        'svc.desc':          'From a professional website to automation systems or artificial intelligence. We tailor every solution to what your business actually needs.',
+        'svc1.title':        'Web design & development',
+        'svc1.text':         'Your business deserves a website that works for you. We design and develop fast, professional sites built to turn visitors into real clients.',
+        'svc2.title':        'Digital design',
+        'svc2.text':         'A weak visual identity loses credibility before a client reads a single word. We create designs that communicate who you are and why you are worth trusting.',
+        'svc3.title':        'Automation',
+        'svc3.text':         'If your team repeats the same tasks every day, you are losing time and money. We identify those processes and automate them so your business runs with less manual effort.',
+        'svc4.title':        'Artificial intelligence',
+        'svc4.text':         'AI is not just for large corporations. We build assistants and tools tailored to your business: customer support, query filtering, data analysis.',
+        'svc5.title':        'Business solutions',
+        'svc5.text':         'Some problems have no off-the-shelf answer. We analyse your operations, pinpoint the bottleneck and build a bespoke digital system that solves it at the root.',
+        'svc6.title':        'Software',
+        'svc6.text':         'When no existing tool fits what you need, we build yours. Scalable digital applications created from scratch and designed to last.',
+        'proc.label':        'How we work',
+        'proc.title':        'A clear process, from start to finish',
+        'proc.desc':         'We work with full transparency. You will always know which phase we are in and what comes next.',
+        'proc.s1.title':     'Discover',
+        'proc.s1.text':      'We listen, understand the business and identify the real need before proposing anything.',
+        'proc.s2.title':     'Design',
+        'proc.s2.text':      'We create a tailored solution. No templates. Every decision is made with purpose and explained clearly.',
+        'proc.s3.title':     'Build',
+        'proc.s3.text':      'We develop and configure the solution with clean code, clear structure and performance as a priority.',
+        'proc.s4.title':     'Test',
+        'proc.s4.text':      'We check performance, security, cross-device compatibility and functionality. Nothing goes live until it works correctly.',
+        'proc.s5.title':     'Launch',
+        'proc.s5.text':      'We publish, configure and make sure everything is ready so you can operate with confidence from day one.',
+        'proc.s6.title':     'Evolve',
+        'proc.s6.text':      'We keep improving the solution as your business grows. Because a good website is never truly finished.',
+        'port.label':        'Projects',
+        'port.title':        'Projects that show what we can do.',
+        'port.desc':         'Every project is different. Here you will find what we have built — with honesty about what it is and what problem it solves.',
+        'port.auto.label': 'More than a website',
+        'port.auto.title': 'Your website can work for you too.',
+        'port.auto.desc': 'We design what happens after someone clicks “contact”: you receive the lead, the information is organised and the client gets an automatic response.',
+        'port.auto.step1': 'Client',
+        'port.auto.step1s': 'Fills in the form',
+        'port.auto.step2': 'Automation',
+        'port.auto.step2s': 'Organises the request',
+        'port.auto.step3': 'You receive the lead',
+        'port.auto.step3s': 'Ready to respond',
+        'port.demo1.cat': 'Concept project · Real estate',
+        'port.demo1.name': 'Casa Norte',
+        'port.demo1.desc': 'Property presentation and lead generation.',
+        'port.demo2.cat': 'Concept project · Restaurant',
+        'port.demo2.name': 'Brasa',
+        'port.demo2.desc': 'Digital experience for bookings and enquiries.',
+        'port.ali.badge':    'Completed',
+        'port.ali.cat':      'Corporate website · Service company',
+        'port.ali.name':     'ALI — Kitchen installation',
+        'port.ali.desc':     'Professional corporate website for a company specialising in kitchen supply and installation. Multilingual site with i18n architecture in 3 languages, optimised SEO and client acquisition system.',
+        'port.ali.tags.aria':'Technologies used',
+        'port.ali.link':     'URL coming soon',
+        'port.ali.link.aria':'Project URL available soon',
+        'port.next.title':   'Your next project',
+        'port.next.cta':     'Start a conversation',
+        'casos.label':       'Solution examples',
+        'casos.title':       'How can YUNAHM help you?',
+        'casos.desc':        'These are examples of what we can build together. Every business has a different story.',
+        'caso1.title':       '"A website that works for you"',
+        'caso1.desc':        'Your site connected to a smart contact form, WhatsApp and an automatic lead capture system. While you sleep, your website keeps attracting clients.',
+        'caso1.note':        'Conceptual example · Designed for each business',
+        'caso2.title':       '"Fewer repetitive tasks"',
+        'caso2.desc':        'We identify the processes that steal your time, automate them and give you hours back every week. Less manual work, more time for what matters.',
+        'caso2.note':        'Conceptual example · Adapted to your operations',
+        'caso3.title':       '"Faster customer support"',
+        'caso3.desc':        'A digital assistant that answers frequently asked questions, schedules appointments or filters queries automatically. Your business available around the clock.',
+        'caso3.note':        'Conceptual example · Configurable for your sector',
+        'caso4.title':       '"From problem to software"',
+        'caso4.desc':        'You have a specific problem no existing tool solves well. We build the solution from scratch, exactly as you need it.',
+        'caso4.note':        'Conceptual example · Every solution is unique',
+        'evol.label':        'Vision',
+        'evol.title':        'Today we build websites and digital solutions. Tomorrow we build increasingly',
+        'evol.title.em':     'intelligent systems.',
+        'evol.desc':         'This is the direction in which YUNAHM is growing. We do not promise what does not exist yet — but we know where we are headed.',
+        'evol.step1':        'Web',
+        'evol.now':          'Now',
+        'evol.step2':        'Automation',
+        'evol.growing':      'Growing',
+        'evol.step3':        'AI',
+        'evol.soon':         'Coming soon',
+        'evol.step4':        'Software',
+        'evol.vision':       'Vision',
+        'evol.step5':        'Subscription',
+        'evol.future':       'Future',
+        'sobre.label':       'About YUNAHM',
+        'sobre.title.line1': 'A digital company',
+        'sobre.title.line2': 'built with <em>purpose.</em>',
+        'sobre.p1':          'YUNAHM was founded on the belief that technology should solve real problems, not add unnecessary complexity. We work with businesses that want to grow, go digital and operate more intelligently.',
+        'sobre.p2':          'Every project begins with listening. We understand the business before proposing any solution. We are meticulous about detail, honest about what we can do and passionate about work done well.',
+        'sobre.p3':          'We learn continuously and apply that learning to every project. We never promise what we cannot deliver.',
+        'sobre.v1.title':    'Honesty over promises',
+        'sobre.v1.text':     'We do not invent results or promise what we cannot deliver. Trust is built through transparency.',
+        'sobre.v2.title':    'Technology as a tool',
+        'sobre.v2.text':     'Technology is not the goal. It is the means to help your business work better and give you more time.',
+        'sobre.v3.title':    'Continuous learning',
+        'sobre.v3.text':     'The digital world changes fast. We stay up to date so we can always offer you the most appropriate solution.',
+        'sobre.v4.title':    'International focus',
+        'sobre.v4.text':     'We work with clients anywhere in the world. Distance is not an obstacle when the work is well organised.',
+        'contact.label':     'Contact',
+        'contact.title':     'Have an idea or a problem you want to <em>solve?</em>',
+        'contact.desc':      'Tell us what you need and what you want to achieve. We will assess the project scope and send you a tailored proposal.',
+        'contact.whatsapp':  'WhatsApp — coming soon',
+        'form.nombre.label': 'Name *',
+        'form.nombre.ph':    'Your name',
+        'form.nombre.err':   'Please enter your name.',
+        'form.empresa.label':'Company',
+        'form.empresa.ph':   'Your company name',
+        'form.email.label':  'Email *',
+        'form.email.err':    'Please enter a valid email address.',
+        'form.pais.label':   'Country',
+        'form.pais.ph':      'Your country',
+        'form.tipo.label':   'Project type',
+        'form.tipo.ph':      'Select an option',
+        'form.tipo.otro':    'Other / Not sure yet',
+        'form.objetivo.label': 'What do you want to achieve?',
+        'form.objetivo.ph': 'E.g. attract more clients, automate a process...',
+        'form.plazo.label': 'When would you like it?',
+        'form.plazo.ph': 'Select an option',
+        'form.plazo.urgente': 'As soon as possible',
+        'form.plazo.1-3m': 'Within 1–3 months',
+        'form.plazo.3-6m': 'Within 3–6 months',
+        'form.plazo.flexible': 'No specific date',
+        'form.msg.label':    'Tell us about your project *',
+        'form.msg.ph':       'Briefly describe what you need, what problem you want to solve or what your idea is...',
+        'form.msg.err':      'Please tell us something about your project.',
+        'form.submit':       'Request a tailored proposal',
+        'form.sending':      'Sending...',
+        'form.privacy':      'You do not need to provide a budget. We will assess the scope and send you a tailored proposal.',
+        'footer.copy':       '© 2026 YUNAHM. All rights reserved.',
+        'footer.privacy':    'Privacy',
+        'footer.privacy.aria':'Privacy policy (coming soon)',
+        'footer.legal':      'Legal notice',
+        'footer.legal.aria': 'Legal notice (coming soon)',
+        'footer.cookies':    'Cookies',
+        'footer.cookies.aria':'Cookies (coming soon)',
+        'back.top':          'Back to top',
+        'hero.aria':         'Home',
+      },
+
+      de: {
+        'meta.title':        'YUNAHM — Digitale Lösungen für moderne Unternehmen',
+        'meta.desc':         'YUNAHM gestaltet digitale Erlebnisse, automatisiert Prozesse und entwickelt technologische Lösungen für moderne Unternehmen. Webdesign, digitales Design, Automatisierung und künstliche Intelligenz.',
+        'meta.og.title':     'YUNAHM — Digitale Lösungen für moderne Unternehmen',
+        'meta.og.desc':      'Wir erkennen Bedürfnisse, entwickeln Lösungen und setzen Technologie ein, um Unternehmen dabei zu helfen, effizienter zu arbeiten, Zeit zu sparen und zu wachsen.',
+        'nav.services':      'Leistungen',
+        'nav.process':       'Prozess',
+        'nav.projects':      'Projekte',
+        'nav.about':         'Über YUNAHM',
+        'nav.contact':       'Kontakt',
+        'nav.cta':           'Projekt starten',
+        'hero.eyebrow':      'Digitale Lösungen für moderne Unternehmen',
+        'hero.title':        'Wir gestalten die<br><em>digitale Zukunft</em><br>Ihres Unternehmens.',
+        'hero.tagline':      'Web · Design · Automatisierung · KI · Software',
+        'hero.desc':         'Wir bauen nicht einfach nur Websites. Wir erkennen, was Ihr Unternehmen bremst, entwickeln die passende Lösung und setzen sie mit Technologie um. Ohne Vorlagen. Ohne Abkürzungen.',
+        'hero.btn2':         'Projekte ansehen',
+        'hero.card.label':   'Ansatz',
+        'hero.card.value':   'Jedes Unternehmen ist anders.<br><span style="color:var(--c-dark)">Jede Lösung auch.</span>',
+        'hero.scroll':       'Scrollen',
+        'dif.label':         'Unsere Philosophie',
+        'dif.title.line1':   'Wir bauen mehr als',
+        'dif.title.line2':   'Websites.',
+        'dif.text':          'Jedes Unternehmen hat andere Bedürfnisse. Wir analysieren, was Sie brauchen, entwickeln die Lösung und setzen sie mit Technologie in die Realität um.',
+        'dif.btn':           'Leistungen entdecken',
+        'dif.p1.title':      'Wir finden das eigentliche Problem',
+        'dif.p1.text':       'Bevor wir etwas vorschlagen, verstehen wir, wie Ihr Unternehmen funktioniert und was sein Wachstum bremst.',
+        'dif.p2.title':      'Wir gestalten ohne generische Vorlagen',
+        'dif.p2.text':       'Jedes Projekt hat seine eigene Identität. Wir übertragen nie dieselbe Lösung auf alle Kunden.',
+        'dif.p3.title':      'Technologie, die für Sie arbeitet',
+        'dif.p3.text':       'Automatisierung, künstliche Intelligenz und Software als Werkzeuge im Dienst Ihres Unternehmens — nie als Selbstzweck.',
+        'svc.label':         'Was wir tun',
+        'svc.title':         'Digitale Lösungen für jeden Bedarf',
+        'svc.desc':          'Von einer professionellen Website bis hin zu Automatisierungssystemen oder künstlicher Intelligenz. Wir passen jede Lösung an das an, was Ihr Unternehmen wirklich braucht.',
+        'svc1.title':        'Webdesign & Entwicklung',
+        'svc1.text':         'Ihr Unternehmen verdient eine Website, die für Sie arbeitet. Wir gestalten und entwickeln schnelle, professionelle Seiten, die Besucher in echte Kunden verwandeln.',
+        'svc2.title':        'Digitales Design',
+        'svc2.text':         'Eine schwache visuelle Identität kostet Glaubwürdigkeit, bevor ein Kunde auch nur ein Wort gelesen hat. Wir schaffen Designs, die zeigen, wer Sie sind und warum man Ihnen vertrauen kann.',
+        'svc3.title':        'Automatisierung',
+        'svc3.text':         'Wenn Ihr Team täglich dieselben Aufgaben wiederholt, verlieren Sie Zeit und Geld. Wir identifizieren diese Prozesse und automatisieren sie, damit Ihr Unternehmen mit weniger manuellem Aufwand läuft.',
+        'svc4.title':        'Künstliche Intelligenz',
+        'svc4.text':         'KI ist nicht nur für große Unternehmen. Wir entwickeln Assistenten und Werkzeuge, die auf Ihr Unternehmen zugeschnitten sind: Kundensupport, Anfragefilterung, Datenanalyse.',
+        'svc5.title':        'Unternehmenslösungen',
+        'svc5.text':         'Manche Probleme haben keine Standardlösung. Wir analysieren Ihre Abläufe, finden den Engpass und entwickeln ein maßgeschneidertes digitales System, das ihn an der Wurzel löst.',
+        'svc6.title':        'Software',
+        'svc6.text':         'Wenn kein bestehendes Werkzeug zu Ihren Anforderungen passt, entwickeln wir Ihres. Skalierbare digitale Anwendungen, von Grund auf neu erstellt und auf Langlebigkeit ausgelegt.',
+        'proc.label':        'Wie wir arbeiten',
+        'proc.title':        'Ein klarer Prozess, von Anfang bis Ende',
+        'proc.desc':         'Wir arbeiten mit vollständiger Transparenz. Sie wissen jederzeit, in welcher Phase wir uns befinden und was als Nächstes kommt.',
+        'proc.s1.title':     'Entdecken',
+        'proc.s1.text':      'Wir hören zu, verstehen das Unternehmen und erkennen den eigentlichen Bedarf, bevor wir etwas vorschlagen.',
+        'proc.s2.title':     'Gestalten',
+        'proc.s2.text':      'Wir entwickeln eine maßgeschneiderte Lösung. Keine Vorlagen. Jede Entscheidung wird mit Bedacht getroffen und klar erklärt.',
+        'proc.s3.title':     'Entwickeln',
+        'proc.s3.text':      'Wir entwickeln und konfigurieren die Lösung mit sauberem Code, klarer Struktur und Leistung als Priorität.',
+        'proc.s4.title':     'Testen',
+        'proc.s4.text':      'Wir prüfen Leistung, Sicherheit, Gerätekompatibilität und Funktionalität. Nichts geht live, bis alles einwandfrei funktioniert.',
+        'proc.s5.title':     'Starten',
+        'proc.s5.text':      'Wir veröffentlichen, konfigurieren und stellen sicher, dass alles bereit ist, damit Sie ab dem ersten Tag mit Zuversicht arbeiten können.',
+        'proc.s6.title':     'Weiterentwickeln',
+        'proc.s6.text':      'Wir verbessern die Lösung kontinuierlich, wenn Ihr Unternehmen wächst. Denn eine gute Website ist nie wirklich fertig.',
+        'port.label':        'Projekte',
+        'port.title':        'Projekte, die zeigen, was wir können.',
+        'port.desc':         'Jedes Projekt ist anders. Hier finden Sie, was wir gebaut haben — mit Ehrlichkeit darüber, was es ist und welches Problem es löst.',
+        'port.auto.label': 'Mehr als eine Website',
+        'port.auto.title': 'Ihre Website kann auch für Sie arbeiten.',
+        'port.auto.desc': 'Wir gestalten, was nach einem Klick auf „Kontakt“ passiert: Sie erhalten den Lead, die Informationen werden organisiert und der Kunde bekommt eine automatische Antwort.',
+        'port.auto.step1': 'Kunde',
+        'port.auto.step1s': 'Füllt das Formular aus',
+        'port.auto.step2': 'Automatisierung',
+        'port.auto.step2s': 'Organisiert die Anfrage',
+        'port.auto.step3': 'Sie erhalten den Lead',
+        'port.auto.step3s': 'Bereit zur Antwort',
+        'port.demo1.cat': 'Konzeptprojekt · Immobilien',
+        'port.demo1.name': 'Casa Norte',
+        'port.demo1.desc': 'Präsentation von Immobilien und Kundengewinnung.',
+        'port.demo2.cat': 'Konzeptprojekt · Restaurant',
+        'port.demo2.name': 'Brasa',
+        'port.demo2.desc': 'Digitale Erfahrung für Reservierungen und Anfragen.',
+        'port.ali.badge':    'Abgeschlossen',
+        'port.ali.cat':      'Unternehmenswebsite · Dienstleistungsunternehmen',
+        'port.ali.name':     'ALI — Kücheninstallation',
+        'port.ali.desc':     'Professionelle Unternehmenswebsite für ein auf Küchenlieferung und -montage spezialisiertes Unternehmen. Mehrsprachige Website mit i18n-Architektur in 3 Sprachen, optimiertem SEO und Kundengewinnungssystem.',
+        'port.ali.tags.aria':'Verwendete Technologien',
+        'port.ali.link':     'URL demnächst',
+        'port.ali.link.aria':'Projekt-URL bald verfügbar',
+        'port.next.title':   'Ihr nächstes Projekt',
+        'port.next.cta':     'Gespräch beginnen',
+        'casos.label':       'Lösungsbeispiele',
+        'casos.title':       'Wie kann YUNAHM Ihnen helfen?',
+        'casos.desc':        'Dies sind Beispiele dafür, was wir gemeinsam aufbauen können. Jedes Unternehmen hat eine andere Geschichte.',
+        'caso1.title':       '„Eine Website, die für Sie arbeitet“',
+        'caso1.desc':        'Ihre Website verbunden mit einem intelligenten Kontaktformular, WhatsApp und einem automatischen Lead-Erfassungssystem. Während Sie schlafen, gewinnt Ihre Website weiter Kunden.',
+        'caso1.note':        'Konzeptionelles Beispiel · Für jedes Unternehmen gestaltet',
+        'caso2.title':       '„Weniger Routineaufgaben“',
+        'caso2.desc':        'Wir identifizieren die Prozesse, die Ihre Zeit stehlen, automatisieren sie und geben Ihnen jede Woche Arbeitsstunden zurück. Weniger manuelle Arbeit, mehr Zeit für das Wesentliche.',
+        'caso2.note':        'Konzeptionelles Beispiel · Auf Ihre Abläufe abgestimmt',
+        'caso3.title':       '„Schnellerer Kundenservice“',
+        'caso3.desc':        'Ein digitaler Assistent, der häufig gestellte Fragen beantwortet, Termine vereinbart oder Anfragen automatisch filtert. Ihr Unternehmen rund um die Uhr erreichbar.',
+        'caso3.note':        'Konzeptionelles Beispiel · Für Ihre Branche konfigurierbar',
+        'caso4.title':       '„Vom Problem zur Software“',
+        'caso4.desc':        'Sie haben ein spezifisches Problem, das kein bestehendes Werkzeug gut löst. Wir entwickeln die Lösung von Grund auf, genau so, wie Sie sie brauchen.',
+        'caso4.note':        'Konzeptionelles Beispiel · Jede Lösung ist einzigartig',
+        'evol.label':        'Vision',
+        'evol.title':        'Heute entwickeln wir Websites und digitale Lösungen. Morgen entwickeln wir immer',
+        'evol.title.em':     'intelligentere Systeme.',
+        'evol.desc':         'Das ist die Richtung, in die YUNAHM wächst. Wir versprechen nicht, was noch nicht existiert — aber wir wissen, wohin wir gehen.',
+        'evol.step1':        'Web',
+        'evol.now':          'Jetzt',
+        'evol.step2':        'Automatisierung',
+        'evol.growing':      'Wachsend',
+        'evol.step3':        'Künstliche Intelligenz',
+        'evol.soon':         'Demnächst',
+        'evol.step4':        'Software',
+        'evol.vision':       'Vision',
+        'evol.step5':        'Abonnement',
+        'evol.future':       'Zukunft',
+        'sobre.label':       'Über YUNAHM',
+        'sobre.title.line1': 'Ein digitales Unternehmen',
+        'sobre.title.line2': 'aufgebaut mit <em>Überzeugung.</em>',
+        'sobre.p1':          'YUNAHM entstand aus der Überzeugung, dass Technologie echte Probleme lösen sollte und keine unnötige Komplexität schafft. Wir arbeiten mit Unternehmen, die wachsen, digitalisieren und intelligenter arbeiten möchten.',
+        'sobre.p2':          'Jedes Projekt beginnt mit Zuhören. Wir verstehen das Unternehmen, bevor wir eine Lösung vorschlagen. Wir sind akribisch in Details, ehrlich über das, was wir leisten können, und leidenschaftlich für gute Arbeit.',
+        'sobre.p3':          'Wir lernen kontinuierlich und wenden dieses Wissen in jedem Projekt an. Wir versprechen nie, was wir nicht halten können.',
+        'sobre.v1.title':    'Ehrlichkeit vor Versprechen',
+        'sobre.v1.text':     'Wir erfinden keine Ergebnisse und versprechen nicht, was wir nicht halten können. Vertrauen entsteht durch Transparenz.',
+        'sobre.v2.title':    'Technologie als Werkzeug',
+        'sobre.v2.text':     'Technologie ist nicht das Ziel. Sie ist das Mittel, damit Ihr Unternehmen besser funktioniert und Sie mehr Zeit haben.',
+        'sobre.v3.title':    'Kontinuierliches Lernen',
+        'sobre.v3.text':     'Die digitale Welt verändert sich schnell. Wir bleiben auf dem neuesten Stand, damit wir Ihnen immer die passendste Lösung anbieten können.',
+        'sobre.v4.title':    'Internationale Ausrichtung',
+        'sobre.v4.text':     'Wir arbeiten mit Kunden überall auf der Welt. Distanz ist kein Hindernis, wenn die Arbeit gut organisiert ist.',
+        'contact.label':     'Kontakt',
+        'contact.title':     'Haben Sie eine Idee oder ein Problem, das Sie <em>lösen</em> möchten?',
+        'contact.desc':      'Erzählen Sie uns, was Sie brauchen und was Sie erreichen möchten. Wir prüfen den Projektumfang und senden Ihnen ein individuelles Angebot.',
+        'contact.whatsapp':  'WhatsApp — demnächst',
+        'form.nombre.label': 'Name *',
+        'form.nombre.ph':    'Ihr Name',
+        'form.nombre.err':   'Bitte geben Sie Ihren Namen ein.',
+        'form.empresa.label':'Unternehmen',
+        'form.empresa.ph':   'Name Ihres Unternehmens',
+        'form.email.label':  'E-Mail *',
+        'form.email.err':    'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
+        'form.pais.label':   'Land',
+        'form.pais.ph':      'Ihr Land',
+        'form.tipo.label':   'Projektart',
+        'form.tipo.ph':      'Option wählen',
+        'form.tipo.otro':    'Anderes / Noch nicht sicher',
+         'form.objetivo.label': 'Was möchten Sie erreichen?',
+         'form.objetivo.ph': 'Z. B. mehr Kunden gewinnen, einen Prozess automatisieren...',
+         'form.plazo.label': 'Wann möchten Sie starten?',
+         'form.plazo.ph': 'Option wählen',
+         'form.plazo.urgente': 'So bald wie möglich',
+         'form.plazo.1-3m': 'In 1–3 Monaten',
+         'form.plazo.3-6m': 'In 3–6 Monaten',
+         'form.plazo.flexible': 'Kein konkreter Termin',
+        'form.msg.label':    'Erzählen Sie uns von Ihrem Projekt *',
+        'form.msg.ph':       'Beschreiben Sie kurz, was Sie brauchen, welches Problem Sie lösen möchten oder wie Ihre Idee aussieht...',
+        'form.msg.err':      'Bitte erzählen Sie uns etwas über Ihr Projekt.',
+        'form.submit':       'Individuelles Angebot anfragen',
+        'form.sending':      'Wird gesendet...',
+        'form.privacy':      'Sie müssen kein Budget angeben. Wir prüfen den Umfang und senden Ihnen ein individuelles Angebot.',
+        'footer.copy':       '© 2026 YUNAHM. Alle Rechte vorbehalten.',
+        'footer.privacy':    'Datenschutz',
+        'footer.privacy.aria':'Datenschutzrichtlinie (demnächst)',
+        'footer.legal':      'Impressum',
+        'footer.legal.aria': 'Impressum (demnächst)',
+        'footer.cookies':    'Cookies',
+        'footer.cookies.aria':'Cookies (demnächst)',
+        'back.top':          'Nach oben',
+        'hero.aria':         'Startseite',
+      }
+    };
+
+    /* ================================================================
+       MOTOR DE INTERNACIONALIZACIÓN
+    ================================================================ */
+    let currentLang = 'es';
+
+    function t(key) {
+      const d = translations[currentLang];
+      return (d && key in d) ? d[key] : (translations.es[key] !== undefined ? translations.es[key] : key);
+    }
+
+    function applyLang(lang) {
+      if (!translations[lang]) return;
+      currentLang = lang;
+
+      /* 1. lang del documento */
+      document.documentElement.lang = lang;
+
+      /* 2. SEO */
+      document.title = t('meta.title');
+      const metaDesc = document.querySelector('meta[name="description"]');
+      const ogTitle  = document.querySelector('meta[property="og:title"]');
+      const ogDesc   = document.querySelector('meta[property="og:description"]');
+      if (metaDesc) metaDesc.setAttribute('content', t('meta.desc'));
+      if (ogTitle)  ogTitle.setAttribute('content',  t('meta.og.title'));
+      if (ogDesc)   ogDesc.setAttribute('content',   t('meta.og.desc'));
+
+      /* 3. data-i18n → innerHTML */
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        var val = t(key);
+        el.innerHTML = val;
+      });
+
+      /* 4. data-i18n-placeholder */
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+        el.setAttribute('placeholder', t(el.getAttribute('data-i18n-placeholder')));
+      });
+
+      /* 5. data-i18n-aria */
+      document.querySelectorAll('[data-i18n-aria]').forEach(function(el) {
+        el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria')));
+      });
+
+      /* 6. Selector visual activo */
+      langCurrent.textContent = lang.toUpperCase();
+      document.querySelectorAll('.lang-dropdown [data-lang]').forEach(function(btn) {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+      document.querySelectorAll('[data-mobile-lang]').forEach(function(btn) {
+        btn.classList.toggle('active', btn.dataset.mobileLang === lang);
+      });
+
+      /* 7. Guardar preferencia */
+      try { localStorage.setItem('yunahm-language', lang); } catch(e) {}
+
+      /* 8. Cerrar dropdown */
+      langDropdown.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    /* ================================================================
+       NAV SCROLL + BACK TO TOP
+    ================================================================ */
+    var nav     = document.getElementById('nav');
+    var backTop = document.getElementById('backTop');
+
+    window.addEventListener('scroll', function() {
+      var y = window.scrollY;
+      nav.classList.toggle('scrolled', y > 40);
+      backTop.classList.toggle('visible', y > 400);
+    }, { passive: true });
+
+    backTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ================================================================
+       MENÚ MÓVIL
+    ================================================================ */
+    var navToggle = document.getElementById('navToggle');
+    var navMobile = document.getElementById('navMobile');
+
+    function closeMenu() {
+      navToggle.classList.remove('active');
+      navMobile.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    function openMenu() {
+      navToggle.classList.add('active');
+      navMobile.classList.add('open');
+      navToggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    navToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      navMobile.classList.contains('open') ? closeMenu() : openMenu();
+    });
+
+    navMobile.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('click', function(e) {
+      if (navMobile.classList.contains('open') &&
+          !navMobile.contains(e.target) &&
+          !navToggle.contains(e.target)) closeMenu();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        if (navMobile.classList.contains('open')) closeMenu();
+        if (langDropdown.classList.contains('open')) {
+          langDropdown.classList.remove('open');
+          langBtn.setAttribute('aria-expanded', 'false');
+        }
+      }
+    });
+
+    /* ================================================================
+       SELECTOR DE IDIOMA DESKTOP
+    ================================================================ */
+    var langBtn      = document.getElementById('langBtn');
+    var langDropdown = document.getElementById('langDropdown');
+    var langCurrent  = document.getElementById('langCurrent');
+
+    langBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var open = langDropdown.classList.toggle('open');
+      langBtn.setAttribute('aria-expanded', String(open));
+    });
+
+    document.querySelectorAll('.lang-dropdown [data-lang]').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        applyLang(btn.dataset.lang);
+      });
+    });
+
+    document.addEventListener('click', function() {
+      langDropdown.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', 'false');
+    });
+
+    /* SELECTOR MÓVIL */
+    document.querySelectorAll('[data-mobile-lang]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        applyLang(btn.dataset.mobileLang);
+        closeMenu();
+      });
+    });
+
+    /* ================================================================
+       SCROLL REVEAL
+    ================================================================ */
+    var revealEls = document.querySelectorAll('.reveal');
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var siblings = Array.from(entry.target.parentElement.children)
+            .filter(function(c) { return c.classList.contains('reveal'); });
+          var idx = siblings.indexOf(entry.target);
+          setTimeout(function() { entry.target.classList.add('visible'); }, idx * 80);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(function(el) { revealObserver.observe(el); });
+
+    /* ================================================================
+       FORMULARIO
+    ================================================================ */
+    var form       = document.getElementById('contactForm');
+    var submitBtn  = document.getElementById('formSubmit');
+    var submitText = document.getElementById('submitText');
+
+    function validateField(input, errId, condition) {
+      var errEl = document.getElementById(errId);
+      if (!condition) {
+        input.classList.add('error');
+        if (errEl) errEl.classList.add('visible');
+        return false;
+      }
+      input.classList.remove('error');
+      if (errEl) errEl.classList.remove('visible');
+      return true;
+    }
+
+    var fNombre  = document.getElementById('nombre');
+    var fEmail   = document.getElementById('email');
+    var fMensaje = document.getElementById('mensaje');
+
+    fNombre.addEventListener('blur',  function() { validateField(fNombre,  'nombre-err',  fNombre.value.trim().length > 0); });
+    fEmail.addEventListener('blur',   function() { validateField(fEmail,   'email-err',   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fEmail.value)); });
+    fMensaje.addEventListener('blur', function() { validateField(fMensaje, 'mensaje-err', fMensaje.value.trim().length > 10); });
+
+    form.addEventListener('submit', function(e) {
+      var honeypot = form.querySelector('[name="_honeypot"]');
+      if (honeypot && honeypot.value) { e.preventDefault(); return; }
+
+      var ok1 = validateField(fNombre,  'nombre-err',  fNombre.value.trim().length > 0);
+      var ok2 = validateField(fEmail,   'email-err',   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fEmail.value));
+      var ok3 = validateField(fMensaje, 'mensaje-err', fMensaje.value.trim().length > 10);
+
+      if (!ok1 || !ok2 || !ok3) { e.preventDefault(); return; }
+
+      submitBtn.disabled = true;
+      submitText.textContent = t('form.sending');
+      /* Netlify Forms procesa el POST y envía la confirmación */
+    });
+
+    /* ================================================================
+       INICIALIZACIÓN — leer idioma guardado o usar ES
+    ================================================================ */
+    (function init() {
+      var saved = 'es';
+      try { saved = localStorage.getItem('yunahm-language') || 'es'; } catch(e) {}
+      if (!translations[saved]) saved = 'es';
+      applyLang(saved);
+    })();
+
+  </script>
+
+</body>
+</html>
